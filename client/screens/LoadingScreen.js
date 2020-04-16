@@ -11,7 +11,7 @@ import { AsyncStorage } from 'react-native';
 const LoadingScreen = (props) => {
 
 
-  const detectLogin= async ()=>{
+const detectLogin= async ()=>{
     const token = await AsyncStorage.getItem('token')
         if(token){
               props.navigation.replace("home")
@@ -21,7 +21,7 @@ const LoadingScreen = (props) => {
   }
   useEffect(()=>{
    detectLogin()
-  },[])
+},[])
 
   return (
    <View style={styles.container}> 

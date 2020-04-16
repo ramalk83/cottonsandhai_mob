@@ -17,8 +17,8 @@ import LogoImg from '../images/logo.jpg'
 const SignupScreen = (props) => {
 
   const [email,setEmail] = useState('');
-  const [password,setPassword]=useState('')
-
+  const [password,setPassword]=useState('');
+ 
   const sendCred= async (props)=>{
      fetch("http://10.0.2.2:3000/signup",{
        method:"POST",
@@ -61,6 +61,7 @@ const SignupScreen = (props) => {
         onChangeText={(text)=>{setPassword(text)}}
         style={styles.userinputText}     
       />
+      
             <TouchableOpacity onPress={() => sendCred(props)}>
         <Text style={styles.signupButton}>Sign up</Text>
         </TouchableOpacity>

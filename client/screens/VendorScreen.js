@@ -12,25 +12,23 @@ import {
   Image
 } from 'react-native';
 import { AsyncStorage } from 'react-native';
-import LogoImg from '../images/logo.jpg';
-import googleImg from '../images/google.png';
+import LogoImg from '../images/logo.jpg'
 import styles from '../assets/css/style.js';
 
-
-const LoginScreen = (props) => {
-  const [email,setEmail] = useState('');
-  const [password,setPassword]=useState('')
-  
-  
+  const VendorScreen = (props) => {
+  console.log('add vendor invoked')
+  const [companyName,setcompanyName] = useState('');
+  const [nickName,setnickName]=useState('');
+    
   const sendCred = async (props)=>{
-    fetch("http://10.0.2.2:3000/signin",{
+    fetch("http://10.0.2.2:3000/addvendor",{
       method:"POST",
       headers: {
        'Content-Type': 'application/json'
      },
      body:JSON.stringify({
-       "email":email,
-       "password":password
+       "companyName":companyName,
+       "nickName":nickName
      })
     })
     .then(res=>res.json())
@@ -47,49 +45,32 @@ const LoginScreen = (props) => {
 
   return (
    <> 
- 
    <View style={styles.container}>
    <KeyboardAvoidingView behavior="padding"> 
      <StatusBar color="grey" barStyle="dark-content" />
      <Image style={styles.logoImage} source={LogoImg}/>
       <Text style={styles.logoText}>Cotton Sandhai</Text>
       <TextInput
-        label='Email'
-        value={email}
+        label='Company Name'
+        value={companyName}
         style={styles.userinputText}
-        onChangeText={(text)=>setEmail(text)}
+        onChangeText={(text)=>setcompanyName(text)}
       />
       <TextInput
-        label='password'
-        secureTextEntry={true}
-        value={password}
-        onChangeText={(text)=>{setPassword(text)}}
+        label='Nick Name'
+        value={nickName}
+        onChangeText={(text)=>{setnickName(text)}}
         style={styles.userinputText}
       />
-       <TouchableOpacity onPress={() => sendCred(props)}>
-        <Text style={styles.loginButton}>Login</Text>
+      <TouchableOpacity onPress={() => sendCred(props)}>
+        <Text style={styles.loginButton}>Add Vendor</Text>
         </TouchableOpacity>
-      
-    <TouchableOpacity style={styles.FacebookStyle} activeOpacity={0.5}>
-    <Image source={googleImg}
-     style={styles.ImageIconStyle}
-    />
-    
-    <Text style={styles.TextStyle}> Google </Text>
-   </TouchableOpacity>
-
-     
-      <TouchableOpacity>
-        <Text style={styles.signupTextCont}
-      onPress={()=>props.navigation.replace("signup")}
-      >Dont have a account yet? Sign up</Text>
-      </TouchableOpacity>
-
+        <TouchableOpacity onPress={() =>  props.navigation.goBack()}>
+        <Text style={styles.loginButton}>Back</Text>
+        </TouchableOpacity>
        </KeyboardAvoidingView> 
       </View>
    </>
   );
 };
-
-
-export default LoginScreen;
+export default VendorScreen;

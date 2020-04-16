@@ -15,6 +15,9 @@ const authRoutes = require('./routes/authRoutes')
 app.use(bodyParser.json())
 app.use(bodyParser.json({ type: 'application/*+json' }));
 app.use(authRoutes)
+//Added new
+mongoose.set('useNewUrlParser',true);
+mongoose.set('useCreateIndex',true);
 
 mongoose.connect(mongoUrl,{
     useNewUrlParser:true,

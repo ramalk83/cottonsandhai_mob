@@ -34,13 +34,13 @@ useEffect(()=>{
 
    const logout =(props)=>{
       AsyncStorage.removeItem("token").then(()=>{
-        props.navigation.replace("login")
+        props.navigation.replace("LogoutScreen")
       })
    }
 
    const editUser = (props) => {
-    props.navigation.replace("add_vendor");
-        };
+    props.navigation.replace("VendorScreen");
+    };
 
   return (
    <> 
