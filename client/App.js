@@ -36,7 +36,7 @@ const HeaderLeft = () => {
     <View style={{flexDirection: 'row'}}>         
       <TouchableOpacity 
           onPress={() => {
-          navigation.dispatch(DrawerActions.openDrawer());
+          navigation.dispatch(DrawerActions.toggleDrawer());
        }}>
        <Icon.Button name="ios-menu" size={25} backgroundColor="rgba(126, 197, 176, 0.993)"/>
       </TouchableOpacity>
@@ -87,7 +87,7 @@ const App= () => {
     <Stack.Screen name="loading" component={LoadingScreen} />
     <Stack.Screen name="Signup" component={SignupScreen} />
     <Stack.Screen name="VendorScreen" component={VendorScreen} />
-    <Stack.Screen name="Help" component={HelpScreen} />
+ 
     </Stack.Navigator>
   </NavigationContainer>
 
