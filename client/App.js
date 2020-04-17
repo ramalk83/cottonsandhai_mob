@@ -82,12 +82,12 @@ const App= () => {
           component={DrawerComponent}
           name="Cotton Sandhai"
         />
-     <Stack.Screen name="Login" component={LoginScreen} />
-     <Stack.Screen name="Home" component={MainTabScreen} />
-     <Stack.Screen name="loading" component={LoadingScreen} />
-     <Stack.Screen name="signup" component={SignupScreen} />
-     <Stack.Screen name="VendorScreen" component={VendorScreen} />
-    
+    <Stack.Screen name="Login" component={LoginScreen} />
+    <Stack.Screen name="Home" component={MainTabScreen} />
+    <Stack.Screen name="loading" component={LoadingScreen} />
+    <Stack.Screen name="Signup" component={SignupScreen} />
+    <Stack.Screen name="VendorScreen" component={VendorScreen} />
+    <Stack.Screen name="Help" component={HelpScreen} />
     </Stack.Navigator>
   </NavigationContainer>
 
