@@ -13,7 +13,7 @@ import { AsyncStorage } from 'react-native';
 //import Notifications from './Notification'
 import AddVendor from './Add_vendor';
 
-const HomeScreen = (props) => {
+const HomeScreen = ({navigation}) => {
    const [email,setEmail] = useState("loading")
    const Boiler = async ()=>{
       const token = await AsyncStorage.getItem("token")
@@ -32,7 +32,7 @@ useEffect(()=>{
    Boiler()
 },[])
 
-   const logout =(props)=>{
+   /*const logout =(props)=>{
       AsyncStorage.removeItem("token").then(()=>{
         props.navigation.replace("LogoutScreen")
       })
@@ -40,7 +40,7 @@ useEffect(()=>{
 
    const editUser = (props) => {
     props.navigation.replace("VendorScreen");
-    };
+    };*/
 
   return (
    <> 
@@ -49,13 +49,13 @@ useEffect(()=>{
     <Button 
         mode="contained"
         style={styles.logoutButton}
-         onPress={() => logout(props)}>
+         onPress={() => navigation.navigate("Logout")}>
         logout
       </Button>
       <Button 
         mode="contained"
         style={styles.logoutButton}
-         onPress={() => editUser(props)}>
+         onPress={() => navigation.navigate("VendorScreen")}>
         Add Vendor
       </Button>
       {/* <AppContainer /> 

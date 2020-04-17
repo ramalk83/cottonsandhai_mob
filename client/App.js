@@ -1,19 +1,17 @@
 
 import React,{useEffect,useState} from 'react';
 import { Button ,TextInput} from 'react-native-paper';
-import {StyleSheet,
-  View,
-  Text,
- 
-} from 'react-native';
-
-
+import {View, Text, StyleSheet, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { CustomDrawerContent } from './CustomDrawerContent';
 import MainTabScreen from './MainTabScreen';
+
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useNavigation, DrawerActions} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import SignupScreen from './screens/SignupScreen'
 import LoginScreen from './screens/LoginScreen'
@@ -29,22 +27,38 @@ import ContactScreen from './screens/ContactScreen';
 import LogoutScreen from './screens/LogoutScreen';
 import { AsyncStorage } from 'react-native';
 
-
 const Drawer = createDrawerNavigator();
+const Stack=createStackNavigator();
 
-const Stack = createStackNavigator();
-const stackNavigator=()=>{
-<Stack.Navigator headerMode="none">
-<Stack.Screen name="loading" component={LoadingScreen} />
-<Stack.Screen name="home" component={HomeScreen} />
-<Stack.Screen name="login" component={LoginScreen} />
-<Stack.Screen name="signup" component={SignupScreen} />
-<Stack.Screen name="add_vendor" component={AddVendor} />
-</Stack.Navigator>
-}
+const HeaderLeft = () => {
+  const navigation = useNavigation();  
+  return (
+    <View style={{flexDirection: 'row'}}>         
+      <TouchableOpacity 
+          onPress={() => {
+          navigation.dispatch(DrawerActions.openDrawer());
+       }}>
+       <Icon.Button name="ios-menu" size={25} backgroundColor="rgba(126, 197, 176, 0.993)"/>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const DrawerComponent = () => {
+  return (
+   <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
+   <Drawer.Screen component={MainTabScreen} name="Main" />
+   <Drawer.Screen name="Vendor" component={VendorScreen} />
+   <Drawer.Screen name="Trade" component={TradeScreen} />
+   <Drawer.Screen name="Contact" component={ContactScreen} />
+   <Drawer.Screen name="Help" component={HelpScreen} />
+   <Drawer.Screen name="Logout" component={LogoutScreen} />
+   </Drawer.Navigator>
+  );
+};
 
 
-const App= ({ navigation }) => {
+const App= () => {
    const [isloggedin,setLogged] = useState(null)
 
    const detectLogin= async ()=>{
@@ -61,18 +75,21 @@ const App= ({ navigation }) => {
 
 
   return (
-    <NavigationContainer>
-    <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
-      <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
-      <Drawer.Screen name="Vendor" component={VendorScreen} />
-      <Drawer.Screen name="Trade" component={TradeScreen} />
-      <Drawer.Screen name="Contact" component={ContactScreen} />
-      <Drawer.Screen name="Help" component={HelpScreen} />
-      <Drawer.Screen name="Login" component={LoginScreen} />
-      <Drawer.Screen name="Signup" component={SignupScreen} />
-      <Drawer.Screen name="Logout" component={LogoutScreen} />
-    </Drawer.Navigator>
-    </NavigationContainer>
+  <NavigationContainer>
+  <Stack.Navigator >
+   <Stack.Screen
+          options={{headerLeft: ({}) => <HeaderLeft />}}
+          component={DrawerComponent}
+          name="Cotton Sandhai"
+        />
+     <Stack.Screen name="Login" component={LoginScreen} />
+     <Stack.Screen name="Home" component={MainTabScreen} />
+     <Stack.Screen name="loading" component={LoadingScreen} />
+     <Stack.Screen name="signup" component={SignupScreen} />
+     <Stack.Screen name="VendorScreen" component={VendorScreen} />
+    
+    </Stack.Navigator>
+  </NavigationContainer>
 
   );
 };
