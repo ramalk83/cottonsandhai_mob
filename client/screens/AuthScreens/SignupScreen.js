@@ -1,7 +1,7 @@
 
 import React,{useState} from 'react';
 import { Button ,TextInput} from 'react-native-paper';
-import styles from '../assets/css/style.js';
+import styles from '../../assets/css/style.js';
 import {
   View,
   Text,
@@ -12,7 +12,7 @@ import {
   Image
 } from 'react-native';
 import { AsyncStorage } from 'react-native';
-import LogoImg from '../images/logo.jpg'
+import LogoImg from '.../images/logo.jpg'
 
 const SignupScreen = (props) => {
 
@@ -34,7 +34,7 @@ const SignupScreen = (props) => {
      .then(async (data)=>{
             try {
               await AsyncStorage.setItem('token',data.token)
-              props.navigation.replace("home")
+              props.navigation.replace("Home")
             } catch (e) {
               console.log("error hai",e)
             }

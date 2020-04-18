@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import styles from '../assets/css/style.js';
+import styles from '../../assets/css/style.js';
 
 const NotificationScreen = ({navigation}) => {
     return (

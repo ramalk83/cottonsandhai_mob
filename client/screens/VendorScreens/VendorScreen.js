@@ -13,15 +13,13 @@ import {
 } from 'react-native';
 import { AsyncStorage } from 'react-native';
 import LogoImg from '../images/logo.jpg'
-import styles from '../assets/css/style.js';
+import styles from '../../assets/css/style.js';
 
-  const AddVendor = (props) => {
+  const VendorScreen = (props) => {
   console.log('add vendor invoked')
   const [companyName,setcompanyName] = useState('');
   const [nickName,setnickName]=useState('');
-
-  
-  
+    
   const sendCred = async (props)=>{
     fetch("http://10.0.2.2:3000/addvendor",{
       method:"POST",
@@ -37,7 +35,7 @@ import styles from '../assets/css/style.js';
     .then(async (data)=>{
            try {
              await AsyncStorage.setItem('token',data.token)
-             props.navigation.replace("home")
+             props.navigation.replace("Home")
            } catch (e) {
              console.log("error is",e)
               Alert(e)
@@ -67,12 +65,10 @@ import styles from '../assets/css/style.js';
       <TouchableOpacity onPress={() => sendCred(props)}>
         <Text style={styles.loginButton}>Add Vendor</Text>
         </TouchableOpacity>
+       
        </KeyboardAvoidingView> 
       </View>
    </>
   );
 };
-
-
-
-export default AddVendor;
+export default VendorScreen;

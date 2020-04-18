@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import styles from '../assets/css/style.js';
+import styles from '../../assets/css/style.js';
 
-const LogoutScreen = ({navigation}) => {
+const HelpScreen = ({navigation}) => {
     return (
       <View style={styles.containerr}>
-        <Text style={styles.welcomeTextCont}> Logout Screen</Text>
+        <Text style={styles.welcomeTextCont}>Help Screen</Text>
         <Button
                mode="contained"
                style={styles.logoutButton}
@@ -18,5 +18,5 @@ const LogoutScreen = ({navigation}) => {
     );
 };
 
-export default LogoutScreen;
+export default HelpScreen;
 
