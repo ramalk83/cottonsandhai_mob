@@ -12,7 +12,7 @@ import {
   Image
 } from 'react-native';
 import { AsyncStorage } from 'react-native';
-import LogoImg from '../images/logo.jpg'
+import LogoImg from '../../assets/images/logo.jpg'
 import styles from '../../assets/css/style.js';
 
   const AddVendor = (props) => {
@@ -20,8 +20,7 @@ import styles from '../../assets/css/style.js';
   const [companyName,setcompanyName] = useState('');
   const [nickName,setnickName]=useState('');
 
-  
-  
+ 
   const sendCred = async (props)=>{
     fetch("http://10.0.2.2:3000/addvendor",{
       method:"POST",

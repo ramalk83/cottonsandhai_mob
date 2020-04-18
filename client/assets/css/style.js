@@ -155,6 +155,9 @@ containers: {
     color:'#222222',
     textAlign: 'center',
   },
+  tabback:{
+    backgroundColor: 'red',
+  },
   signupButton:{
     marginLeft:40,
     marginRight:40,

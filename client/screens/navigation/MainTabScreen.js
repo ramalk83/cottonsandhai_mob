@@ -19,8 +19,8 @@ const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
   
-  <Tab.Navigator headerMode="none" initialRouteName="Home"
-    activeColor="blue" style={styles. topDrawerSection}>
+  <Tab.Navigator headerMode="none" /*initialRouteName="Home"*/
+    activeColor="blue" style={styles.tabback}>
     <Tab.Screen
       name="Home"
       component={HomeStackScreen}
@@ -53,8 +53,9 @@ const MainTabScreen = () => (
           <Icon name="ios-person" color='black' size={26} />
         ),
       }}
+      
     />
-    
+   
   </Tab.Navigator>
 );
 
@@ -63,6 +64,7 @@ export default MainTabScreen;
 const HomeStackScreen = () => (
 <HomeStack.Navigator    headerMode="none" >
 <HomeStack.Screen name="Home" component={HomeScreen} />
+<HomeStack.Screen name="Help" component={HelpScreen} />
 <HomeStack.Screen name="Logout" component={LogoutScreen} />
 <HomeStack.Screen name="Vendor" component={VendorScreen} />
 </HomeStack.Navigator>
@@ -71,6 +73,9 @@ const HomeStackScreen = () => (
 const DetailsStackScreen = () => (
 <DetailsStack.Navigator  headerMode="none">
 <DetailsStack.Screen name="Notification" component={NotificationScreen}  />
+<DetailsStack.Screen name="Help" component={HelpScreen} />
+<DetailsStack.Screen name="Logout" component={LogoutScreen} />
+<DetailsStack.Screen name="Vendor" component={VendorScreen} />
 </DetailsStack.Navigator>
 );
 
@@ -78,6 +83,9 @@ const DetailsStackScreen = () => (
 const AccountStackScreen = () => (
   <AccountStack.Navigator  headerMode="none">
   <AccountStack.Screen name="Account" component={AccountScreen} />
+  <AccountStack.Screen name="Help" component={HelpScreen} />
+  <AccountStack.Screen name="Logout" component={LogoutScreen} />
+  <AccountStack.Screen name="Vendor" component={VendorScreen} />
   </AccountStack.Navigator>
   );
     

@@ -12,7 +12,7 @@ import {
   Image
 } from 'react-native';
 import { AsyncStorage } from 'react-native';
-import LogoImg from '.../images/logo.jpg'
+import LogoImg from '../../assets/images/logo.jpg'
 
 const SignupScreen = (props) => {
 

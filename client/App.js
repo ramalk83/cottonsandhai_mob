@@ -32,6 +32,7 @@ const Stack=createStackNavigator();
 const Stacklogin=createStackNavigator();
 const Stacksignup=createStackNavigator();
 const StackHome=createStackNavigator();
+const StackTrade=createStackNavigator();
 
 const HeaderLeft = () => {
   const navigation = useNavigation();  
@@ -72,10 +73,12 @@ const HomestackComponent =() => {
           component={DrawerComponent}
           name="Cotton Sandhai"
     />
-  <StackHome.Screen name="Home" component={MainTabScreen}  />              
+  <StackHome.Screen name="Home" component={MainTabScreen}  />   
   </StackHome.Navigator>
   );
 }
+
+
 
 const LoginstackComponent =() => {
   return (
@@ -121,12 +124,12 @@ const App= ({ navigation }) => {
   <Stack.Navigator  headerMode="none" initialRouteName="Login"> 
     <Stack.Screen name="Login" component={LoginstackComponent}  />                    
     <Stack.Screen name="Home" component={HomestackComponent} />
+  
     <Stack.Screen name="loading" component={LoadingScreen} />
     <Stack.Screen name="signup" component={SignupstackComponent} />
     <Stack.Screen name="VendorScreen" component={VendorScreen} /> 
   </Stack.Navigator>
   </NavigationContainer>
-
   );
 };
 

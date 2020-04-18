@@ -9,6 +9,7 @@ import {
 import { AsyncStorage } from 'react-native';
 import styles from '../../assets/css/style';
 import VendorScreen from '../VendorScreens/VendorScreen';
+import LogoutScreen from '../AuthScreens/LogoutScreen';
 
 const HomeScreen = (props) => {
   const [email, setEmail] = useState("loading")
@@ -30,7 +31,7 @@ const HomeScreen = (props) => {
 
   const logout = (props) => {
     AsyncStorage.removeItem("token").then(() => {
-      props.navigation.replace("LoginScreen")
+      props.navigation.replace("Logout")
     })
   }
 

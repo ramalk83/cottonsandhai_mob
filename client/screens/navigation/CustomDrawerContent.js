@@ -42,6 +42,7 @@ export function  CustomDrawerContent(props) {
                                 color={color}
                                 size={size}
                                 />
+                                
                             )}
                             label="Trade"
                             onPress={() => {props.navigation.navigate('Trade')}}

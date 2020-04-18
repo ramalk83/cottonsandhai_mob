@@ -12,8 +12,8 @@ import {
   Image
 } from 'react-native';
 import { AsyncStorage } from 'react-native';
-import LogoImg from '../images/logo.jpg';
-import googleImg from '../images/google.png';
+import LogoImg from '../../assets/images/logo.jpg';
+import googleImg from '../../assets/images/google.png';
 import styles from '../../assets/css/style.js';
 
 

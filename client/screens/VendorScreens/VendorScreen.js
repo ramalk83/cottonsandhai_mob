@@ -12,7 +12,7 @@ import {
   Image
 } from 'react-native';
 import { AsyncStorage } from 'react-native';
-import LogoImg from '../images/logo.jpg'
+import LogoImg from '../../assets/images/logo.jpg'
 import styles from '../../assets/css/style.js';
 
   const VendorScreen = (props) => {
