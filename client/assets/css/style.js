@@ -9,8 +9,7 @@ export default StyleSheet.create({
       container: {
           flex: 1,
           backgroundColor: '#fff',
-        },
-   
+        },  
         
         logoImage:{
         width:70, 
@@ -156,8 +155,36 @@ containers: {
     textAlign: 'center',
   },
   tabback:{
-    backgroundColor: 'red',
+    backgroundColor: 'white',
   },
+  userinputText:{
+    marginLeft:40,
+    marginRight:40,
+    marginTop:18,
+    backgroundColor:'#fadadd'
+  },
+  titleContainer:{
+    flexDirection:'row',
+    justifyContent:'flex-end'
+},
+description:{
+  flex:1,
+  fontSize:22,
+  color:'grey',
+  paddingTop:10         
+},
+himage:{
+  width:20,
+  marginLeft:40,
+  height:20
+},
+item: {
+  
+ backgroundColor:'lightgray',
+  marginVertical: 2,
+  height:40,
+  marginHorizontal: 6,
+},
   signupButton:{
     marginLeft:40,
     marginRight:40,
@@ -176,10 +203,13 @@ containers: {
   userInfoSection: {
     paddingLeft: 20,
   },
-  title: {
-    fontSize: 16,
-    marginTop: 3,
+  itemtitle: {
+    fontSize: 30,
+    marginTop: 5,
+    marginBottom:20,
     fontWeight: 'bold',
+     textAlign:'center',
+    
   },
   caption: {
     fontSize: 14,
@@ -205,12 +235,12 @@ containers: {
   bottomDrawerSection: {
       marginBottom: 15,
       borderTopColor: '#f4f4f4',
-      borderTopWidth: 2
+      borderTopWidth: 2,
   },
   topDrawerSection: {
     borderTopColor: '#f4f4f4',
     borderTopWidth: 1,
-    backgroundColor:'gray'
+    
 },
   preference: {
     flexDirection: 'row',
@@ -218,5 +248,47 @@ containers: {
     paddingVertical: 12,
     paddingHorizontal: 16,
   },
+  titleContainer:{
+    fontSize:20,
+  },
+  dataContainer:{
+    fontSize:16,
+  },
+  iconContainer:{
+    flexDirection:'row',
+    color: 'blue',
+  },
+  deleteContainer:{
+    flexDirection:'row',
+    color: 'blue',
+    marginBottom:20
+  },
+  detailButton:{
+    marginLeft:2,
+    marginRight:10,
+    marginTop:10,
+    backgroundColor: '#a7c4aa',
+    color:'#fff',
+    fontSize:20,
+    textAlign: 'center',
+    borderRadius: 4,
+    padding:5
+  },
+
+  flatlisttext:{
+    fontSize:32,
+    marginLeft:50,
+    backgroundColor:'grey'
+},
+
+  ititle:{
+    color:'black',
+    fontSize:25,
+    textAlign: 'center',
+    borderRadius: 20,
+    marginBottom:20,
+    marginTop:5,
+    paddingBottom:10
+  }, 
 
   });

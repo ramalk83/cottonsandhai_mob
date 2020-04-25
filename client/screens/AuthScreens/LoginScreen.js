@@ -73,17 +73,16 @@ const LoginScreen = (props) => {
     <TouchableOpacity style={styles.FacebookStyle} activeOpacity={0.5}>
     <Image source={googleImg}
      style={styles.ImageIconStyle}
-    />
-    
-    <Text style={styles.TextStyle}> Google </Text>
+    />    
+   
+   <Text style={styles.TextStyle}> Google </Text>
    </TouchableOpacity>
-
-     
-      <TouchableOpacity>
+    
+   <TouchableOpacity>
         <Text style={styles.signupTextCont}
       onPress={()=>props.navigation.replace("Signup")}
       >Dont have a account yet? Sign up</Text>
-      </TouchableOpacity>
+   </TouchableOpacity>
 
        </KeyboardAvoidingView> 
       </View>

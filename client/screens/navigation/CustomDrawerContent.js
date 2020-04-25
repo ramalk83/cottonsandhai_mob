@@ -6,8 +6,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import styles from '../../assets/css/style.js';
 
 export function  CustomDrawerContent(props) {
-
-
     return(
         <View style={{flex:1}}>
             <DrawerContentScrollView {...props}>
@@ -20,8 +18,7 @@ export function  CustomDrawerContent(props) {
                                 size={size}
                                 />
                             )}
-                            label="Home"                        
-
+                            label="Home"                     
                             onPress={() => {props.navigation.navigate('Home')}}
                         />
                         <DrawerItem 
@@ -68,14 +65,13 @@ export function  CustomDrawerContent(props) {
                             )}
                             label="Contact"
                             onPress={() => {props.navigation.navigate('Contact')}}
-                        />
-                      
-                    </Drawer.Section>                  
-             </DrawerContentScrollView>
+                        />                   
+       </Drawer.Section>                  
+</DrawerContentScrollView>
 
-            <Drawer.Section style={styles.bottomDrawerSection}>
-                <DrawerItem 
-                    icon={({color, size}) => (
+<Drawer.Section style={styles.bottomDrawerSection}>
+           <DrawerItem 
+                icon={({color, size}) => (
                         <Icon 
                         name="exit-to-app" 
                         color={color}

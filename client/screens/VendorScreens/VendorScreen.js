@@ -1,74 +1,125 @@
-
-import React,{useState} from 'react';
-import { Button ,TextInput} from 'react-native-paper';
-import {
-  View,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Alert,
-  StyleSheet,
-  Image
-} from 'react-native';
-import { AsyncStorage } from 'react-native';
-import LogoImg from '../../assets/images/logo.jpg'
+import React, { useEffect, useState } from 'react';
+import { View, Text, FlatList, Button,StyleSheet,TouchableOpacity,TextInput } from "react-native";
+import { ListItem, SearchBar } from "react-native-elements";
+import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../../assets/css/style.js';
 
-  const VendorScreen = (props) => {
-  console.log('add vendor invoked')
-  const [companyName,setcompanyName] = useState('');
-  const [nickName,setnickName]=useState('');
-    
-  const sendCred = async (props)=>{
-    fetch("http://10.0.2.2:3000/addvendor",{
-      method:"POST",
-      headers: {
-       'Content-Type': 'application/json'
-     },
-     body:JSON.stringify({
-       "companyName":companyName,
-       "nickName":nickName
-     })
-    })
-    .then(res=>res.json())
-    .then(async (data)=>{
-           try {
-             await AsyncStorage.setItem('token',data.token)
-             props.navigation.replace("Home")
-           } catch (e) {
-             console.log("error is",e)
-              Alert(e)
-           }
-    })
- }
+const VendorScreen = ({navigation})=> {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState([]);
+  const [temp, setTemp] = useState([]);
+  const [search, setSearch] = useState([]);
+  const [loading, setLoading] = useState(false);
+  
+  const onPress=()=>{
+    setLoading(!loading);
+  }
+  
+  async function fetchData() {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res => res.json())
+      .then(data => 
+        {
+          setData(data) 
+       })
+  }
 
+  useEffect(() => {
+     fetchData();
+  },[]);
+
+  const renderHeader = () => {
+  return <>
+  <SearchBar placeholder="Type Here..." lightTheme round
+    editable={true}
+   // value={search}
+   // onChangeText={updateSearch}
+  // value={search}        
+  />
+<Button
+  mode="contained"
+  style={styles.logoutButton}
+    title="Add Vendor"
+    onPress={() => navigation.navigate("VendorhomeScreen")}
+/>
+</>
+}
+    
+const FlatListItemSeparator = () => {
+      return <View
+          style={{
+            height: 1,
+            width: "100%",
+            marginTop:10,
+            backgroundColor: "#d8d8d8",
+          }}
+        />      
+}
+
+/*const updateSearch = (search) => {
+  setSearch( (search) , () => {
+    if ('' == search) {
+      setData({
+        data: [temp]
+      });
+      return;
+  }
+
+  data = temp.filter(function (item) {
+      return item.name.toLowerCase().match(search.toLowerCase());
+      //return item.name.toLowerCase().indexOf(search.toLowerCase()!== -1);
+    }).map(function ({ id, name, email }) {
+      return { id, name, email };
+    });
+  });
+};*/
+
+
+const renderDetails = ({ name, email,address,id}) =>{
   return (
-   <> 
-   <View style={styles.container}>
-   <KeyboardAvoidingView behavior="padding"> 
-     <StatusBar color="grey" barStyle="dark-content" />
-     <Image style={styles.logoImage} source={LogoImg}/>
-      <Text style={styles.logoText}>Cotton Sandhai</Text>
-      <TextInput
-        label='Company Name'
-        value={companyName}
-        style={styles.userinputText}
-        onChangeText={(text)=>setcompanyName(text)}
-      />
-      <TextInput
-        label='Nick Name'
-        value={nickName}
-        onChangeText={(text)=>{setnickName(text)}}
-        style={styles.userinputText}
-      />
-      <TouchableOpacity onPress={() => sendCred(props)}>
-        <Text style={styles.loginButton}>Add Vendor</Text>
-        </TouchableOpacity>
-       
-       </KeyboardAvoidingView> 
-      </View>
-   </>
-  );
+    <>
+  <View>
+      <Text style={styles.titleContainer}>{name}</Text>
+      <Text style={styles.dataContainer}>{email}</Text>  
+      <View style={{ flexDirection: 'row'}}>
+      <TouchableOpacity onPress={onPress}>
+        <Text style={styles.detailButton}>See More</Text>
+        {loading && renderDetails1({address,id})}      
+      </TouchableOpacity>      
+      <TouchableOpacity >
+        <Text style={styles.detailButton}>Edit</Text>
+      </TouchableOpacity>
+      <TouchableOpacity >
+        <Text style={styles.detailButton}>Delete</Text>
+      </TouchableOpacity>              
+     </View>                 
+  </View>  
+  </> 
+  )
+}
+
+function renderDetails1({address}){
+  return(
+  <View>
+   <Text style={styles.titleContainer}>{address.street}</Text>
+   <Text style={styles.dataContainer}>{address.zipcode}</Text>  
+  </View>
+  )
 };
+
+return (
+    <View>
+     <FlatList
+          ListHeaderComponent={renderHeader}
+          data={data}
+          keyExtractor={item => item.id}
+          ItemSeparatorComponent = { FlatListItemSeparator }
+          renderItem={({ item }) => (            
+           renderDetails(item)           
+          )}      
+        />   
+    </View>
+  );
+}
 export default VendorScreen;
+

@@ -1,5 +1,5 @@
+import React,{useEffect,useState,Component} from 'react';
 
-import React,{useEffect,useState} from 'react';
 import { Button ,TextInput} from 'react-native-paper';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -17,14 +17,19 @@ import SignupScreen from './screens/AuthScreens/SignupScreen'
 import LoginScreen from './screens/AuthScreens/LoginScreen'
 import LoadingScreen from './screens/AuthScreens/LoadingScreen';
 import HomeScreen from './screens/AuthScreens/HomeScreen'
-import AddVendor from './screens/VendorScreens/Add_vendor';
+import LogoutScreen from './screens/AuthScreens/LogoutScreen';
+
 import NotificationScreen from './screens/ContactScreens/NotificationScreen';
 import AccountScreen from './screens/ContactScreens/AccountScreen';
-import VendorScreen from './screens/VendorScreens/VendorScreen';
-import TradeScreen from './screens/TradeScreens/TradeScreen';
+
 import HelpScreen from './screens/ContactScreens/HelpScreen';
 import ContactScreen from './screens/ContactScreens/ContactScreen';
-import LogoutScreen from './screens/AuthScreens/LogoutScreen';
+
+import VendorScreen from './screens/VendorScreens/VendorScreen';
+import VendorhomeScreen from './screens/VendorScreens/AddVendor/Home';
+import VendorhomeitemScreen from './screens/VendorScreens/AddVendor/HomeItem';
+
+import TradeScreen from './screens/TradeScreens/TradeScreen';
 import { AsyncStorage } from 'react-native';
 
 const Drawer = createDrawerNavigator();
@@ -33,6 +38,10 @@ const Stacklogin=createStackNavigator();
 const Stacksignup=createStackNavigator();
 const StackHome=createStackNavigator();
 const StackTrade=createStackNavigator();
+const Stacklogout=createStackNavigator();
+const Stackvendor=createStackNavigator();
+const Stackvendorhome=createStackNavigator();
+const Stackvendorhomeitem=createStackNavigator();
 
 const HeaderLeft = () => {
   const navigation = useNavigation();  
@@ -56,11 +65,11 @@ const DrawerComponent = () => {
   return (
    <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
    <Drawer.Screen component={MainTabScreen} name="Main" />
-   <Drawer.Screen name="Vendor" component={VendorScreen} />
+   <Drawer.Screen name="Vendor" component={VendorstackComponent} />
    <Drawer.Screen name="Trade" component={TradeScreen} />
    <Drawer.Screen name="Contact" component={ContactScreen} />
    <Drawer.Screen name="Help" component={HelpScreen} />
-   <Drawer.Screen name="Logout" component={LogoutScreen} />
+   <Drawer.Screen name="Logout" component={LogoutstackComponent} />
    </Drawer.Navigator>
   );
 };
@@ -91,7 +100,35 @@ const LoginstackComponent =() => {
   );
 }
 
+const VendorstackComponent =() => {
+  return (
+  <Stackvendor.Navigator  headerMode="none">   
+  <Stackvendor.Screen name="Vendor" component={VendorScreen}  />                
+  <Stackvendor.Screen name="VendorhomeScreen" component={Vendorhomestack} />  
+  <Stackvendor.Screen name="VendorHomeitemScreen" component={Vendorhomeitemstack } />
+  </Stackvendor.Navigator>
+  );
+}
 
+const Vendorhomestack =() => {
+  return (
+  <Stackvendorhome.Navigator  headerMode="none">   
+  <Stackvendorhome.Screen name="VendorhomeScreen" component={VendorhomeScreen}  />                
+  <Stackvendorhome.Screen name="VendorHomeitemScreen" component={Vendorhomeitemstack } />
+  <Stackvendorhome.Screen name="Vendor" component={VendorScreen} />  
+  </Stackvendorhome.Navigator>
+  );
+}
+
+const Vendorhomeitemstack =() => {
+  return (
+  <Stackvendorhomeitem.Navigator  headerMode="none">   
+  <Stackvendorhomeitem.Screen name="VendorhomeScreen" component={VendorhomeScreen}  />                
+  <Stackvendorhomeitem.Screen name="VendorHomeitemScreen" component={VendorhomeitemScreen} />
+  <Stackvendorhomeitem.Screen name="Vendor" component={VendorScreen} />  
+  </Stackvendorhomeitem.Navigator>
+  );
+}
 
 const SignupstackComponent =() => {
   return (
@@ -100,6 +137,15 @@ const SignupstackComponent =() => {
   <Stacksignup.Screen name="Home" component={HomestackComponent} />
   <Stacksignup.Screen name="Loading" component={LoadingScreen} />
   </Stacksignup.Navigator>
+  );
+}
+
+const LogoutstackComponent =() => {
+  return (
+  <Stacklogout.Navigator  headerMode="none">  
+  <Stacklogout.Screen name="Login" component={LoginScreen} />           
+  <Stacklogout.Screen name="Home" component={HomestackComponent} />
+  </Stacklogout.Navigator>
   );
 }
 
@@ -123,11 +169,10 @@ const App= ({ navigation }) => {
   <NavigationContainer>
   <Stack.Navigator  headerMode="none" initialRouteName="Login"> 
     <Stack.Screen name="Login" component={LoginstackComponent}  />                    
-    <Stack.Screen name="Home" component={HomestackComponent} />
-  
+    <Stack.Screen name="Home" component={HomestackComponent} />  
     <Stack.Screen name="loading" component={LoadingScreen} />
     <Stack.Screen name="signup" component={SignupstackComponent} />
-    <Stack.Screen name="VendorScreen" component={VendorScreen} /> 
+    <Stack.Screen name="Vendor" component={VendorstackComponent} />
   </Stack.Navigator>
   </NavigationContainer>
   );

@@ -10,24 +10,28 @@ import HelpScreen from '../ContactScreens/HelpScreen';
 import LogoutScreen from '../AuthScreens/LogoutScreen';
 import VendorScreen from '../VendorScreens/VendorScreen';
 import SignupScreen from '../AuthScreens/SignupScreen';
+import TradeScreen from '../TradeScreens/TradeScreen';
 import styles from '../../assets/css/style.js';
 
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
 const AccountStack = createStackNavigator();
+const TradeStack = createStackNavigator();
+
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
   
   <Tab.Navigator headerMode="none" /*initialRouteName="Home"*/
-    activeColor="blue" style={styles.tabback}>
+  activeColor="black" inactiveColor="#434445"  barStyle={{ backgroundColor: 'lightgray' }}
+  >
     <Tab.Screen
       name="Home"
       component={HomeStackScreen}
       options={{
         tabBarLabel: 'Home',
-        tabBarColor: 'black',
-        tabBarIcon: ({ color }) => (
+        tabBarColor: 'lightgray',
+        tabBarIcon: ({color}) => (
           <Icon name="ios-home" color='black' size={26} />
         ),
       }}
@@ -37,8 +41,8 @@ const MainTabScreen = () => (
       component={DetailsStackScreen}
       options={{
         tabBarLabel: 'Notification',
-        tabBarColor: 'black',
-        tabBarIcon: ({ color }) => (
+        tabBarColor: 'lightgray',
+        tabBarIcon: ({color}) => (
           <Icon name="ios-notifications" color='black' size={26} />
         ),
       }}
@@ -48,14 +52,13 @@ const MainTabScreen = () => (
       component={AccountStackScreen}
       options={{
         tabBarLabel: 'Account',
-        tabBarColor: 'black',
-        tabBarIcon: ({ color }) => (
+        tabBarColor: 'lightgray',
+        tabBarIcon: ({color}) => (
           <Icon name="ios-person" color='black' size={26} />
         ),
-      }}
-      
+      }}    
     />
-   
+
   </Tab.Navigator>
 );
 
@@ -89,3 +92,9 @@ const AccountStackScreen = () => (
   </AccountStack.Navigator>
   );
     
+  const TradeStackScreen = () => (
+    <TradeStack.Navigator  headerMode="none">
+    <TradeStack.Screen name="Account" component={TradeScreen} />
+    </TradeStack.Navigator>
+    );
+      

@@ -1,62 +1,59 @@
+
 import React, { useEffect, useState } from 'react';
 import { Button, TextInput } from 'react-native-paper';
 import {
   ActivityIndicator,
   Text,
   StyleSheet,
-  View
+  View,
+  TouchableOpacity
 } from 'react-native';
 import { AsyncStorage } from 'react-native';
 import styles from '../../assets/css/style';
-import VendorScreen from '../VendorScreens/VendorScreen';
-import LogoutScreen from '../AuthScreens/LogoutScreen';
-import HelpScreen from '../ContactScreens/HelpScreen';
+//import AddVendor from '../VendorScreen/AddVendor';
 
-
-const HomeScreen = (props) => {
+const VerificationScreen = (props) => {
   const [email, setEmail] = useState("loading")
   const Boiler = async () => {
     const token = await AsyncStorage.getItem("token")
-    fetch('http://10.0.2.2:3000/', {
+    fetch('http://10.0.2.2:3000/verification', {
       headers: new Headers({
         Authorization: "Bearer " + token
       })
     }).then(res => res.json())
       .then(data => {
         console.log(data)
-        setEmail(data.email)
+        // setEmail(data.email)
       })
   }
   useEffect(() => {
     Boiler()
-  }, [])
+  }, []) 
 
-  const logout = (props) => {
+  const resend = (props) => {
     AsyncStorage.removeItem("token").then(() => {
-      props.navigation.replace("Logout")
-    })
+      props.navigation.replace("Login")
+     })
   }
 
-  const addVendor = (props) => {
-    props.navigation.replace("Vendor");
-  };
 
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.welcomeTextCont}>Welcome!, Your email is {email}</Text>
+        <Text style={styles.welcomeTextCont}>Please verify your email to continue. If you have not yet received
+    the email, please click below to resend email.</Text>
         <Button
           mode="contained"
           style={styles.logoutButton}
-          onPress={() => logout(props)}>
-          logout
+          onPress={() => resend(props)}>
+          Resend Email
       </Button>
-        <Button
-          mode="contained"
-          style={styles.logoutButton}
-          onPress={() => addVendor(props)}>
-          Add Vendor
-      </Button>
+        <TouchableOpacity>
+          <Text
+            style={styles.signinTextCont}
+            onPress={() => props.navigation.replace("Login")}
+          >Click here to Login</Text>
+        </TouchableOpacity>
       </View>
     </>
   );
@@ -64,4 +61,4 @@ const HomeScreen = (props) => {
 
 
 
-export default HomeScreen;
+export default VerificationScreen;

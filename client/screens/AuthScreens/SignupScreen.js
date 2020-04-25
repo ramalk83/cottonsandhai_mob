@@ -42,7 +42,7 @@ const SignupScreen = (props) => {
   }
   return (
    <> 
-      <View style={styles.containers}>
+  <View style={styles.containers}>
    <KeyboardAvoidingView behavior="padding">
      <StatusBar backgroundColor="grey" barStyle="light-content" />
      <Image style={styles.logoImage} source={LogoImg}/>
@@ -51,8 +51,7 @@ const SignupScreen = (props) => {
         label='Email'
         value={email}
         style={styles.userinputText}
-        onChangeText={(text)=>setEmail(text)}
-     
+        onChangeText={(text)=>setEmail(text)}     
       />
       <TextInput
         label='password'
@@ -62,13 +61,13 @@ const SignupScreen = (props) => {
         style={styles.userinputText}     
       />
       
-            <TouchableOpacity onPress={() => sendCred(props)}>
+      <TouchableOpacity onPress={() => sendCred(props)}>
         <Text style={styles.signupButton}>Sign up</Text>
         </TouchableOpacity>
       <TouchableOpacity>
         <Text
       style={styles.signinTextCont}
-      onPress={()=>props.navigation.replace("login")}
+      onPress={()=>props.navigation.replace("Login")}
       >Already have an account? Sign In</Text>
       </TouchableOpacity>
       </KeyboardAvoidingView>
