@@ -10,7 +10,7 @@ import { AsyncStorage } from 'react-native';
 import styles from '../../assets/css/style';
 import VendorScreen from '../VendorScreens/VendorScreen';
 import LogoutScreen from '../AuthScreens/LogoutScreen';
-import HelpScreen from '../ContactScreens/HelpScreen';
+import TradeScreen from '../TradeScreens/TradeScreen';
 
 
 const HomeScreen = (props) => {
@@ -41,6 +41,9 @@ const HomeScreen = (props) => {
     props.navigation.replace("Vendor");
   };
 
+  const addTrade = (props) => {
+    props.navigation.replace("Trade");
+  };
   return (
     <>
       <View style={styles.container}>
@@ -55,8 +58,9 @@ const HomeScreen = (props) => {
           mode="contained"
           style={styles.logoutButton}
           onPress={() => addVendor(props)}>
-          Add Vendor
+          Vendor
       </Button>
+     
       </View>
     </>
   );

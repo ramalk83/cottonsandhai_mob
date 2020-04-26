@@ -42,7 +42,7 @@ export default function VendorhomeitemScreen({ title,id }) {
       <Text style={styles.ititle}>{title}    
       <Image source={images.expand} style={styles.himage}></Image>
       </Text>
-    </View>
+</View>
    
 </TouchableWithoutFeedback>
 {loading && renderDetails()}
