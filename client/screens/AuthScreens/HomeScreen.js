@@ -60,7 +60,12 @@ const HomeScreen = (props) => {
           onPress={() => addVendor(props)}>
           Vendor
       </Button>
-     
+      <Button
+          mode="contained"
+          style={styles.logoutButton}
+          onPress={() => {{props.navigation.navigate('Trade')}}}>
+          Trade
+      </Button>
       </View>
     </>
   );

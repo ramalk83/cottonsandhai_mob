@@ -3,7 +3,6 @@ import { View, Text, FlatList, Button,StyleSheet,TouchableOpacity,TextInput } fr
 import { ListItem, SearchBar } from "react-native-elements";
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../../assets/css/style.js';
-import VendorhomeScreen from './AddVendor/Home';
 
 const VendorScreen = ({navigation})=> {
   const [data, setData] = useState([]);
@@ -12,8 +11,16 @@ const VendorScreen = ({navigation})=> {
   const [search, setSearch] = useState([]);
   const [loading, setLoading] = useState(false);
   
-  const onPress=()=>{
-
+  const onPress=(id)=>{
+setTemp({
+    Temp:this.Temp.map(Tempnew=>{
+        if(Tempnew.id ===id) 
+        return{
+            loading:'false',id:Tempnew.id,
+            renderDetails1(Tempnew)
+        }
+    })
+})
     setLoading(!loading);
   }
   
@@ -22,7 +29,8 @@ const VendorScreen = ({navigation})=> {
       .then(res => res.json())
       .then(data => 
         {
-          setData(data) 
+          setData(data), 
+          setTemp(data)
        })
   }
 
@@ -84,7 +92,7 @@ const renderDetails = ({ name, email,address,id}) =>{
       <Text style={styles.titleContainer}>{name}</Text>
       <Text style={styles.dataContainer}>{email}</Text>  
       <View style={{ flexDirection: 'row'}}>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={onPress(id)}>
         <Text style={styles.detailButton}>See More</Text>
         {loading && renderDetails1({address})} 
         

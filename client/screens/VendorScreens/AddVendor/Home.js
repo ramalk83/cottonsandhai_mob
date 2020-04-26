@@ -34,9 +34,7 @@ export default function  VendorhomeScreen() {
        <TouchableOpacity onPress={() => sendCred(props)}>
         <Text style={styles.loginButton}>Submit</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => sendCred(props)}>
-        <Text style={styles.loginButton}>Vendor</Text>
-        </TouchableOpacity>
+       
     </View>
   );
 }

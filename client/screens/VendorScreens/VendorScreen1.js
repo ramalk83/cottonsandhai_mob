@@ -3,7 +3,6 @@ import { View, Text, FlatList, Button,StyleSheet,TouchableOpacity,TextInput } fr
 import { ListItem, SearchBar } from "react-native-elements";
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../../assets/css/style.js';
-import VendorhomeScreen from './AddVendor/Home';
 
 const VendorScreen = ({navigation})=> {
   const [data, setData] = useState([]);
@@ -84,7 +83,7 @@ const renderDetails = ({ name, email,address,id}) =>{
       <Text style={styles.titleContainer}>{name}</Text>
       <Text style={styles.dataContainer}>{email}</Text>  
       <View style={{ flexDirection: 'row'}}>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={onPress()}>
         <Text style={styles.detailButton}>See More</Text>
         {loading && renderDetails1({address})} 
         

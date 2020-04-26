@@ -51,7 +51,7 @@ const HeaderLeft = () => {
           onPress={() => {
           navigation.dispatch(DrawerActions.toggleDrawer());
        }}>
-       <Icon.Button name="ios-menu" size={25} backgroundColor="gray"/>
+       <Icon.Button name="ios-menu" size={25} backgroundColor="rgba(126, 197, 176, 0.993)"/>
       </TouchableOpacity>
     </View>
   );
@@ -66,7 +66,7 @@ const DrawerComponent = () => {
    <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
    <Drawer.Screen component={MainTabScreen} name="Main" />
    <Drawer.Screen name="Vendor" component={VendorstackComponent} />
-   <Drawer.Screen name="Trade" component={TradestackComponent} />
+   <Drawer.Screen name="Trade" component={TradeScreen} />
    <Drawer.Screen name="Contact" component={ContactScreen} />
    <Drawer.Screen name="Help" component={HelpScreen} />
    <Drawer.Screen name="Logout" component={LogoutstackComponent} />
@@ -77,13 +77,12 @@ const DrawerComponent = () => {
 const HomestackComponent =() => {
   return (
   <StackHome.Navigator >   
-   <StackHome.Screen
+   <Stack.Screen
           options={{headerLeft: ({}) => <HeaderLeft />}}
           component={DrawerComponent}
           name="Cotton Sandhai"
     />
-  <StackHome.Screen name="Home" component={MainTabScreen}  />  
-  <StackHome.Screen name="Trade" component={TradestackComponent} /> 
+  <StackHome.Screen name="Home" component={MainTabScreen}  />   
   </StackHome.Navigator>
   );
 }
@@ -103,23 +102,11 @@ const LoginstackComponent =() => {
 
 const VendorstackComponent =() => {
   return (
-  <Stackvendor.Navigator  headerMode="none" initialRouteName="Vendor">   
+  <Stackvendor.Navigator  headerMode="none">   
   <Stackvendor.Screen name="Vendor" component={VendorScreen}  />                
-  <Stackvendor.Screen name="Home" component={HomestackComponent} />
-  <Stackvendor.Screen name="VendorhomeScreen" component={Vendorhomestack} />  
-  <Stackvendor.Screen name="VendorHmeitemScreen" component={VendorhomeitemScreen } />
+  <Stackvendor.Screen name="VendorhomeScreen" component={VendorhomeScreen} />  
+  <Stackvendor.Screen name="VendorhomeitemScreen" component={VendorhomeitemScreen } />
   </Stackvendor.Navigator>
-  );
-}
-
-
-const TradestackComponent =() => {
-  return (
-  <StackTrade.Navigator  headerMode="none">   
-  <StackTrade.Screen name="Trade" component={TradeScreen}  />                
-  <StackTrade.Screen name="Home" component={HomestackComponent} />
-  
-  </StackTrade.Navigator>
   );
 }
 
@@ -127,22 +114,21 @@ const Vendorhomestack =() => {
   return (
   <Stackvendorhome.Navigator  headerMode="none">   
   <Stackvendorhome.Screen name="VendorhomeScreen" component={VendorhomeScreen}  />                
-
-  <Stackvendorhome.Screen name="VendorHomeitemScreen" component={VendorhomeitemScreen } />
+  <Stackvendorhome.Screen name="VendorhomeitemScreen" component={Vendorhomeitemstack } />
   <Stackvendorhome.Screen name="Vendor" component={VendorScreen} />  
   </Stackvendorhome.Navigator>
   );
 }
 
-/*const Vendorhomeitemstack =() => {
+const Vendorhomeitemstack =() => {
   return (
   <Stackvendorhomeitem.Navigator  headerMode="none">   
   <Stackvendorhomeitem.Screen name="VendorhomeScreen" component={VendorhomeScreen}  />                
-  <Stackvendorhomeitem.Screen name="VendorHomeitemScreen" component={VendorhomeitemScreen} />
+  <Stackvendorhomeitem.Screen name="VendorhomeitemScreen" component={VendorhomeitemScreen} />
   <Stackvendorhomeitem.Screen name="Vendor" component={VendorScreen} />  
   </Stackvendorhomeitem.Navigator>
   );
-}*/
+}
 
 const SignupstackComponent =() => {
   return (
@@ -185,9 +171,9 @@ const App= ({ navigation }) => {
     <Stack.Screen name="Login" component={LoginstackComponent}  />                    
     <Stack.Screen name="Home" component={HomestackComponent} />  
     <Stack.Screen name="loading" component={LoadingScreen} />
-    <Stack.Screen name="Trade" component={TradestackComponent} />
     <Stack.Screen name="signup" component={SignupstackComponent} />
     <Stack.Screen name="Vendor" component={VendorstackComponent} />
+   
   </Stack.Navigator>
   </NavigationContainer>
   );
