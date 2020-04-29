@@ -2,25 +2,34 @@ import React from 'react';
 import { SafeAreaView, View, FlatList,TouchableOpacity, StyleSheet, Text } from 'react-native';
 import Constants from 'expo-constants';
 import HomeItem from './HomeItem'
+import VendorScreen from '../VendorScreen'
 import styles from '../../../assets/css/style.js';
 
 const DATA = [
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'Account details',
+    id: '1',
+    title: 'Company Details',
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
+    id: '2',
+    title: 'Primary Contact Details',
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
+    id: '3',
+    title: 'Secondary Contact Details',
+  },
+  {
+    id: '4',
+    title: 'Goverence',
+  },
+  {
+    id: '5',
+    title: 'Insurance',
   },
 ];
 
 
-export default function  VendorhomeScreen() {
+const VendorhomeScreen = () =>{
   return (
     <View style={styles.container}>
       <Text style={styles.itemtitle}>Add Vendor</Text>
@@ -31,7 +40,7 @@ export default function  VendorhomeScreen() {
         id={item.id}  />}
         keyExtractor={item => item.id}
       />
-       <TouchableOpacity onPress={() => sendCred(props)}>
+       <TouchableOpacity >
         <Text style={styles.loginButton}>Submit</Text>
         </TouchableOpacity>
        
@@ -39,7 +48,6 @@ export default function  VendorhomeScreen() {
   );
 }
 
-
-
+export default VendorhomeScreen
 
 

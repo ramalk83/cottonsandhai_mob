@@ -3,9 +3,9 @@ import { View, Text, FlatList, Button,StyleSheet,TouchableOpacity,TextInput } fr
 import { ListItem, SearchBar } from "react-native-elements";
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../../assets/css/style.js';
-import VendorhomeScreen from './AddVendor/Home';
+import VendorhomeScreen from './AddVendor/VendorhomeScreen';
 
-const VendorScreen = ({navigation})=> {
+const VendorScreen = (props)=> {
   const [data, setData] = useState([]);
   const [error, setError] = useState([]);
   const [temp, setTemp] = useState([]);
@@ -30,6 +30,11 @@ const VendorScreen = ({navigation})=> {
      fetchData();
   },[]);
 
+  const vendorPage = (props) => {
+    props.navigation.replace("VendorhomeScreen");
+  };
+
+  
   const renderHeader = () => {
   return <>
   <SearchBar placeholder="Type Here..." lightTheme round
@@ -42,8 +47,7 @@ const VendorScreen = ({navigation})=> {
   mode="contained"
   style={styles.logoutButton}
     title="Add Vendor"
-    onPress={() => navigation.navigate("VendorhomeScreen")}
-/>
+    onPress={() =>vendorPage(props)}></Button>
 </>
 }
     
@@ -66,7 +70,6 @@ const FlatListItemSeparator = () => {
       });
       return;
   }
-
   data = temp.filter(function (item) {
       return item.name.toLowerCase().match(search.toLowerCase());
       //return item.name.toLowerCase().indexOf(search.toLowerCase()!== -1);
@@ -125,4 +128,3 @@ return (
   );
 }
 export default VendorScreen;
-

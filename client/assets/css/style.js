@@ -27,6 +27,7 @@ export default StyleSheet.create({
           marginLeft:40,
           marginRight:40,
           marginTop:18,
+          marginBottom:8,
           backgroundColor:'#fadadd'
         },
         signupTextCont:{
@@ -142,12 +143,16 @@ containers: {
     textAlign: 'center',
     marginBottom:50
   },
+
   userinputText:{
-    marginLeft:40,
+    marginLeft:20,
     marginRight:40,
     marginTop:18,
-    backgroundColor:'pink'
+    borderColor:"gray",
+    borderWidth:1,
+    borderRadius:5
   },
+
   signinTextCont:{
     fontSize:18,
     marginTop:130,
@@ -157,12 +162,7 @@ containers: {
   tabback:{
     backgroundColor: 'white',
   },
-  userinputText:{
-    marginLeft:40,
-    marginRight:40,
-    marginTop:18,
-    backgroundColor:'#fadadd'
-  },
+
   titleContainer:{
     flexDirection:'row',
     justifyContent:'flex-end'
@@ -284,7 +284,7 @@ item: {
   ititle:{
     color:'black',
     fontSize:25,
-    textAlign: 'center',
+    textAlign: 'left',
     borderRadius: 20,
     marginBottom:20,
     marginTop:5,

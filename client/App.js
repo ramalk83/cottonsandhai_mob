@@ -26,7 +26,7 @@ import HelpScreen from './screens/ContactScreens/HelpScreen';
 import ContactScreen from './screens/ContactScreens/ContactScreen';
 
 import VendorScreen from './screens/VendorScreens/VendorScreen';
-import VendorhomeScreen from './screens/VendorScreens/AddVendor/Home';
+import VendorhomeScreen from './screens/VendorScreens/AddVendor/VendorhomeScreen';
 import VendorhomeitemScreen from './screens/VendorScreens/AddVendor/HomeItem';
 
 import TradeScreen from './screens/TradeScreens/TradeScreen';
@@ -65,7 +65,7 @@ const DrawerComponent = () => {
   return (
    <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
    <Drawer.Screen component={MainTabScreen} name="Main" />
-   <Drawer.Screen name="Vendor" component={VendorstackComponent} />
+   <Drawer.Screen name="Vendor" component={VendorhomeScreen} />
    <Drawer.Screen name="Trade" component={TradeScreen} />
    <Drawer.Screen name="Contact" component={ContactScreen} />
    <Drawer.Screen name="Help" component={HelpScreen} />
@@ -102,31 +102,21 @@ const LoginstackComponent =() => {
 
 const VendorstackComponent =() => {
   return (
-  <Stackvendor.Navigator  headerMode="none">   
-  <Stackvendor.Screen name="Vendor" component={VendorScreen}  />                
-  <Stackvendor.Screen name="VendorhomeScreen" component={VendorhomeScreen} />  
+  <Stackvendor.Navigator  headerMode="none">  
+  <Stackvendor.Screen name="VendorhomeScreen" component={Vendorhomestack} /> 
+  <Stackvendor.Screen name="Vendor" component={VendorScreen}  />            
   <Stackvendor.Screen name="VendorhomeitemScreen" component={VendorhomeitemScreen } />
   </Stackvendor.Navigator>
-  );
+  ); 
 }
 
 const Vendorhomestack =() => {
   return (
   <Stackvendorhome.Navigator  headerMode="none">   
   <Stackvendorhome.Screen name="VendorhomeScreen" component={VendorhomeScreen}  />                
-  <Stackvendorhome.Screen name="VendorhomeitemScreen" component={Vendorhomeitemstack } />
+  <Stackvendorhome.Screen name="VendorhomeitemScreen" component={VendorhomeitemScreen } />
   <Stackvendorhome.Screen name="Vendor" component={VendorScreen} />  
   </Stackvendorhome.Navigator>
-  );
-}
-
-const Vendorhomeitemstack =() => {
-  return (
-  <Stackvendorhomeitem.Navigator  headerMode="none">   
-  <Stackvendorhomeitem.Screen name="VendorhomeScreen" component={VendorhomeScreen}  />                
-  <Stackvendorhomeitem.Screen name="VendorhomeitemScreen" component={VendorhomeitemScreen} />
-  <Stackvendorhomeitem.Screen name="Vendor" component={VendorScreen} />  
-  </Stackvendorhomeitem.Navigator>
   );
 }
 
@@ -173,7 +163,7 @@ const App= ({ navigation }) => {
     <Stack.Screen name="loading" component={LoadingScreen} />
     <Stack.Screen name="signup" component={SignupstackComponent} />
     <Stack.Screen name="Vendor" component={VendorstackComponent} />
-   
+    
   </Stack.Navigator>
   </NavigationContainer>
   );
