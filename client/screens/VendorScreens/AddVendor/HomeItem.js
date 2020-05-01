@@ -157,19 +157,19 @@ function renderDetails4(){
 return (
 <>
 <View style={styles.container}>
-      <TouchableOpacity  key={id}
+  <TouchableOpacity  key={id}
        onPress={event => {
        //alert(`${loading}: ${id}`);
         setLoading(!loading);
         setId(id)    
        }}>
-    <View style={styles.item}>
+     <View style={styles.item}>
       <Text style={styles.ititle}>{title}    
       <Image source={images.expand} style={styles.himage}></Image>
       </Text> 
     </View>
-{idcase()}
-    </TouchableOpacity>
+   {idcase()}
+  </TouchableOpacity>
 </View>  
 </>  
 );
