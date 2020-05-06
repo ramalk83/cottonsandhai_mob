@@ -6,81 +6,49 @@ import styles from '../../assets/css/style.js';
 import VendorhomeScreen from './AddVendor/VendorhomeScreen';
 
 
-function Item({ id,name, email, address,selected, onSelect }) {
-  return (
-  <>
-  <View>
-    <Text style={styles.titleContainer}>{name}</Text>
-    <Text style={styles.dataContainer}>{email}</Text>  
-    <View style={{ flexDirection: 'row'}}>
-    <TouchableOpacity
-      onPress={() => onSelect(id)}
-    >
-    <Text style={styles.detailButton}>See More</Text>
-    </TouchableOpacity>
-    <TouchableOpacity >
-        <Text style={styles.detailButton}>Edit</Text>
-      </TouchableOpacity>
-      <TouchableOpacity >
-        <Text style={styles.detailButton}>Delete</Text>
-      </TouchableOpacity>              
-     </View>                 
-  </View>  
-   {
-    selected
-    ?
-    <>
-    <Text style={styles.dataContainer}>{address.street}</Text>  
-    <Text style={styles.dataContainer}>{`${address.city}-${address.zipcode}`}</Text>
-    </>
-    :
-    <Text></Text>
-    }
-    </>
-  );
-}
-
-
 const VendorScreen = ({navigation})=> {
-  const [selected, setSelected] = useState(new Map());
+  const [selected, setSelected] = useState(new Map());  
   const [data, setData] = useState([]);
-  const [temp, setTemp] = useState([]);
-
   const [query, setQuery] = useState('');
-  const [filteredDataList, setFilteredDataList] = useState(dataList);
+  const [filteredDataList, setFilteredDataList] = useState(dataList); 
   const [loading, setLoading] = useState(false);
-  
+
   const onSelect = React.useCallback(
     id => {
-      const newSelected = new Map(selected);
-      newSelected.set(id, !selected.get(id));
+      const newSelected = new Map(selected);     
+      newSelected.set(id, !selected.get(id));     
       setSelected(newSelected);
     },
     [selected],
   );
 
-//Fetch data
-  useEffect(() => {
+  const onPress1=(item)=> {
+    props.navigation.navigate('Home', {post3:data});
+    
+  }
+
+ //Fetch data
+  async function fetchData() {
     fetch("https://jsonplaceholder.typicode.com/users")
-    .then(res => res.json())
-    .then(data => 
-      {
-        setData(data);   
-        setTemp(data);      
-     })
+      .then(res => res.json())
+      .then(data => 
+        {
+          setData(data);         
+       })
+  }
+  useEffect(() => {
+     fetchData();
   },[]);
 
 
-
-  
-const dataList = Object.values(temp)
-.map(detailsData => ({
-  ...detailsData,
-  lowerCaseName: detailsData.name.toLowerCase(),
-}))
-.sort((a, b) => a.name > b.name);
-
 // Get the values of the countries and sort is alphabetically
+const dataList = Object.values(data)
+  .map(detailsData => ({
+    ...detailsData,
+    lowerCaseName: detailsData.name.toLowerCase(),
+  }))
+  .sort((a, b) => a.name > b.name);
+
   useEffect(() => {
     const lowerCaseQuery = query.toLowerCase();
     const newDatas = dataList
@@ -90,25 +58,19 @@ const dataList = Object.values(temp)
         rank: detailsData.lowerCaseName.indexOf(lowerCaseQuery),
       }))
       .sort((a, b) => a.rank - b.rank);
-  setFilteredDataList(newDatas);
-  //setData(newDatas)
+
+    setFilteredDataList(newDatas);
+    //setData(newDatas)
   }, [query]);
 
 
 
 const renderHeader = () => {
     return <>
-   <SearchBar placeholder="Type Here..." lightTheme round
+    <SearchBar placeholder="Type Here..." lightTheme round
       value={query}
       onChangeText={setQuery}
-  />
-
-<Button
-  mode="contained"
-  style={styles.logoutButton}
-    title="Add Vendor"
-    onPress={() => navigation.navigate("VendorhomeScreen")}
-/>
+  /> 
 </>
 }
     
@@ -124,25 +86,80 @@ const FlatListItemSeparator = () => {
 }
 
 
+const renderData= ({item })=> {
+  //selected=!!selected.get(item.id)
+  return (    
+  <>
+    <View>       
+    <Text style={styles.titleContainer}>{item.name}</Text>
+    <Text style={styles.dataContainer}>{item.email}</Text>  
+    <View style={{ flexDirection: 'row'}}>
+    <TouchableOpacity
+     onPress={() => onSelect(item.id)}
+    >
+    <Text style={styles.detailButton}>See More</Text>
+    </TouchableOpacity>
+    <TouchableOpacity 
+      onPress={() => {
+        /* 1. Navigate to the Details route with params */
+       navigation.navigate('editVendor',{ post:item});
+      }}>
+    <Text style={styles.detailButton}>Edit</Text>
+    </TouchableOpacity>
+    <TouchableOpacity >
+        <Text style={styles.detailButton}>Delete</Text>
+    </TouchableOpacity>              
+   </View>                 
+  </View> 
+  <RowItem
+        item={item}
+        id={item.id}
+        selected={!!selected.get(item.id)}
+         onSelect={onSelect}
+       
+    /> 
+   
+    </>
+  );
+}
+
+function RowItem({ id,item,selected, onSelect }) {
+  return (
+  <>
+   {  
+    selected
+    ?
+    <>
+    <Text style={styles.dataContainer}>{item.address.street}</Text>  
+    <Text style={styles.dataContainer}>{`${item.address.city}-${item.address.zipcode}`}</Text>
+    </>
+    :
+    <Text></Text>
+    }
+ 
+    </>
+  );
+}
+
+
 return (
-  <SafeAreaView style={styles.container}>
-  <FlatList
-    data={filteredDataList}
+<SafeAreaView style={styles.container}>
+<>
+<Button
+        title="Go to Details"
+        onPress={() => 
+          /* 1. Navigate to the Details route with params */
+         navigation.navigate('editvendorScreen')}
+  />
+<FlatList
+    data={data}
     ListHeaderComponent={renderHeader}
     ItemSeparatorComponent = { FlatListItemSeparator }
-    renderItem={({ item }) => (
-      <Item
-      id={item.id}
-        name={item.name}
-        email={item.email}
-        address={item.address}
-        selected={!!selected.get(item.id)}
-        onSelect={onSelect}
-      />
-    )}
+    renderItem={renderData}    
     keyExtractor={item => item.id}
     extraData={selected}
-  />
+/>
+</>
 </SafeAreaView>
   );
 }

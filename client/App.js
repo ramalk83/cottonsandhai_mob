@@ -28,6 +28,7 @@ import ContactScreen from './screens/ContactScreens/ContactScreen';
 import VendorScreen from './screens/VendorScreens/VendorScreen';
 import VendorhomeScreen from './screens/VendorScreens/AddVendor/VendorhomeScreen';
 import VendorhomeitemScreen from './screens/VendorScreens/AddVendor/HomeItem';
+import editvendorScreen from './screens/VendorScreens/editVendor';
 
 import TradeScreen from './screens/TradeScreens/TradeScreen';
 import { AsyncStorage } from 'react-native';
@@ -65,7 +66,7 @@ const DrawerComponent = () => {
   return (
    <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
    <Drawer.Screen component={MainTabScreen} name="Main" />
-   <Drawer.Screen name="Vendor" component={VendorhomeScreen} />
+   <Drawer.Screen name="Vendor" component={VendorstackComponent} />
    <Drawer.Screen name="Trade" component={TradeScreen} />
    <Drawer.Screen name="Contact" component={ContactScreen} />
    <Drawer.Screen name="Help" component={HelpScreen} />
@@ -104,7 +105,8 @@ const VendorstackComponent =() => {
   return (
   <Stackvendor.Navigator  headerMode="none">  
   <Stackvendor.Screen name="VendorhomeScreen" component={Vendorhomestack} /> 
-  <Stackvendor.Screen name="Vendor" component={VendorScreen}  />            
+  <Stackvendor.Screen name="Vendor" component={VendorScreen}  />   
+  <Stackvendor.Screen name="editVendor" component={editvendorScreen}  />          
   <Stackvendor.Screen name="VendorhomeitemScreen" component={VendorhomeitemScreen } />
   </Stackvendor.Navigator>
   ); 
@@ -163,7 +165,7 @@ const App= ({ navigation }) => {
     <Stack.Screen name="loading" component={LoadingScreen} />
     <Stack.Screen name="signup" component={SignupstackComponent} />
     <Stack.Screen name="Vendor" component={VendorstackComponent} />
-    
+    <Stack.Screen name="editVendor" component={editvendorScreen}  /> 
   </Stack.Navigator>
   </NavigationContainer>
   );
