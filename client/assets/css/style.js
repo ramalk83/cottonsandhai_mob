@@ -314,9 +314,11 @@ modalView: {
 },
 openButton: {
   backgroundColor: "#F194FF",
-  borderRadius: 20,
-  padding: 10,
-  elevation: 2
+  borderRadius: 10,
+  padding: 8,
+  elevation: 2,
+  marginRight:10,
+  marginTop:10
 },
 textStyle: {
   color: "white",

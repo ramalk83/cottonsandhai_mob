@@ -9,7 +9,6 @@ import { ConfirmDialog } from 'react-native-simple-dialogs';
 
 const VendorScreen = ()=> {
   const [selected, setSelected] = useState(new Map());  
-
   const [selected1, setSelected1] = useState(new Map()); 
   const [data, setData] = useState([]);
   const [query, setQuery] = useState('');
@@ -18,6 +17,7 @@ const VendorScreen = ()=> {
   const navigation =useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
 
+  //See more Function
   const onSelect = React.useCallback(
     id => {
       const newSelected = new Map(selected);     
@@ -27,19 +27,18 @@ const VendorScreen = ()=> {
     [selected],
   );
 
+  //Delete function
   const onSelect1 = React.useCallback(
-    id => {
-      const newSelected1 = new Map(selected1);     
-      newSelected1.set(id, !selected.get(id));     
-      setSelected(newSelected1);      
+    id1 => {
+      const newSelected1 = new Map(selected);     
+      newSelected1.set(id1, !selected.get(id1));     
+      setSelected1(newSelected1); 
+      setModalVisible(true);     
     },
     [selected1],
   );
 
-  const onPress1=(item)=> {
-    props.navigation.navigate('Home', {post3:data});
-   }
-
+  
  //Fetch data
   async function fetchData() {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -99,19 +98,20 @@ const FlatListItemSeparator = () => {
 }
 
 
-const renderData= ({item })=> {
-  
+const renderData= ({item })=> {  
   return (    
   <>
     <View>       
     <Text style={styles.titleContainer}>{item.name}</Text>
     <Text style={styles.dataContainer}>{item.email}</Text>  
     <View style={{ flexDirection: 'row'}}>
+
     <TouchableOpacity
      onPress={() => onSelect(item.id)}
     >
     <Text style={styles.detailButton}>See More</Text>
     </TouchableOpacity>
+
     <TouchableOpacity 
        onPress={() => {
         /* 1. Navigate to the Details route with params */
@@ -119,25 +119,27 @@ const renderData= ({item })=> {
       }}>
     <Text style={styles.detailButton}>Edit</Text>
     </TouchableOpacity>
+
     <TouchableOpacity 
-    // onPress={() => onSelect1(item.id)}
-    >
+     onPress={() => onSelect1(item.id)} >      
       <Text style={styles.detailButton}>Delete</Text>
-    </TouchableOpacity>              
+    </TouchableOpacity> 
    </View>                 
   </View> 
+
   <RowItem
         item={item}
         id={item.id}
         selected={!!selected.get(item.id)}
          onSelect={onSelect}       
     /> 
-  {/*<RowItem1
+
+  <RowItem1
         item={item}
         id={item.id}
         selected1={!!selected1.get(item.id)}
-         onSelect1={onSelect1}       
-  /> */}
+        onSelect1={onSelect1}       
+  /> 
 
     </>
   );
@@ -155,7 +157,7 @@ function RowItem({ id,item,selected, onSelect }) {
     <Text style={styles.dataContainer}>{`${item.address.city}-${item.address.zipcode}`}</Text>
     </>
     :
-    <Text></Text>
+   <></>
     }
  
     </>
@@ -164,24 +166,48 @@ function RowItem({ id,item,selected, onSelect }) {
 
 
  
-/*function RowItem1({ id,item,selected1, onSelect1 }) {
+function RowItem1({ id,item,selected1, onSelect1 }) {
   return (
   <>
    {  
     selected1
     ?
-    <>
-    <Text style={styles.dataContainer}>{item.address.street}</Text>  
-    <Text style={styles.dataContainer}>{`${item.address.city}-${item.address.zipcode}`}</Text>
-    </>
+    <Modal
+    animationType="none"
+    transparent={true}
+    visible={modalVisible}
+    onRequestClose={() => {
+      Alert.alert("Modal has been closed.");
+    }}
+  >
+    <View style={styles.centeredView}>
+      <View style={styles.modalView}>
+        <Text style={styles.modalText}>Are you sure you want to delete?</Text>
+        <Text style={styles.dataContainer}>{id}</Text> 
+        <View style={{ flexDirection: 'row'}}>
+        <TouchableHighlight
+          style={{ ...styles.openButton, backgroundColor: "#2196F3" }}>
+          <Text style={styles.textStyle}>Submit</Text>
+        </TouchableHighlight>
+         <TouchableHighlight
+          style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+          onPress={() => {
+            setModalVisible(!modalVisible);
+          }}>
+          <Text style={styles.textStyle}>Cancel</Text>
+        </TouchableHighlight>
+        </View>
+      </View>
+    </View>
+  </Modal>
     :
-    <Text></Text>
+    <></>
     }
  
     </>
   );
 }
-*/
+
 
 return (
 <SafeAreaView style={styles.container}>
@@ -198,7 +224,7 @@ return (
     ItemSeparatorComponent = { FlatListItemSeparator }
     renderItem={renderData}    
     keyExtractor={item => item.id}
-    extraData={selected}
+    extraData={selected,selected1}
 />
 </>
 </SafeAreaView>
