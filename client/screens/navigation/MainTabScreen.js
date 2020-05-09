@@ -8,7 +8,8 @@ import NotificationScreen from '../ContactScreens/NotificationScreen';
 import AccountScreen from '../ContactScreens/AccountScreen';
 import HelpScreen from '../ContactScreens/HelpScreen';
 import LogoutScreen from '../AuthScreens/LogoutScreen';
-import VendorScreen from '../VendorScreens/VendorScreen';
+import VendorStackNavigation  from './StackNavigators/vendorStackNavigation';
+
 import SignupScreen from '../AuthScreens/SignupScreen';
 import TradeScreen from '../TradeScreens/TradeScreen';
 import styles from '../../assets/css/style.js';
@@ -69,7 +70,8 @@ const HomeStackScreen = () => (
 <HomeStack.Screen name="Home" component={HomeScreen} />
 <HomeStack.Screen name="Help" component={HelpScreen} />
 <HomeStack.Screen name="Logout" component={LogoutScreen} />
-<HomeStack.Screen name="Vendor" component={VendorScreen} />
+<HomeStack.Screen name="Trade" component={TradeStackScreen} />
+<HomeStack.Screen name="Vendor" component={VendorStackNavigation} />
 </HomeStack.Navigator>
 );
 
@@ -96,5 +98,5 @@ const AccountStackScreen = () => (
     <TradeStack.Navigator  headerMode="none">
     <TradeStack.Screen name="Account" component={TradeScreen} />
     </TradeStack.Navigator>
-    );
+  );
       

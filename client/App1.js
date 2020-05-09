@@ -1,14 +1,13 @@
 import React,{useEffect,useState,Component} from 'react';
 
 import { Button ,TextInput} from 'react-native-paper';
-import {View, Text, StyleSheet, Image, Modal} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { CustomDrawerContent } from './screens/navigation/CustomDrawerContent';
 import MainTabScreen from './screens/navigation/MainTabScreen';
-import VendorStackNavigation  from './screens/navigation/StackNavigators/vendorStackNavigation';
 
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation, DrawerActions} from '@react-navigation/native';
@@ -26,6 +25,11 @@ import AccountScreen from './screens/ContactScreens/AccountScreen';
 import HelpScreen from './screens/ContactScreens/HelpScreen';
 import ContactScreen from './screens/ContactScreens/ContactScreen';
 
+import VendorScreen from './screens/VendorScreens/VendorScreen';
+import VendorhomeScreen from './screens/VendorScreens/AddVendor/VendorhomeScreen';
+import VendorhomeitemScreen from './screens/VendorScreens/AddVendor/HomeItem';
+import editvendorScreen from './screens/VendorScreens/editVendor';
+
 import TradeScreen from './screens/TradeScreens/TradeScreen';
 import { AsyncStorage } from 'react-native';
 
@@ -36,6 +40,9 @@ const Stacksignup=createStackNavigator();
 const StackHome=createStackNavigator();
 const StackTrade=createStackNavigator();
 const Stacklogout=createStackNavigator();
+const Stackvendor=createStackNavigator();
+const Stackvendorhome=createStackNavigator();
+const Stackvendorhomeitem=createStackNavigator();
 
 const HeaderLeft = () => {
   const navigation = useNavigation();  
@@ -59,7 +66,7 @@ const DrawerComponent = () => {
   return (
    <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
    <Drawer.Screen component={MainTabScreen} name="Main" />
-   <Drawer.Screen name="Vendor" component={VendorStackNavigation} />
+   <Drawer.Screen name="Vendor" component={VendorstackComponent} />
    <Drawer.Screen name="Trade" component={TradeScreen} />
    <Drawer.Screen name="Contact" component={ContactScreen} />
    <Drawer.Screen name="Help" component={HelpScreen} />
@@ -81,6 +88,8 @@ const HomestackComponent =() => {
   );
 }
 
+
+
 const LoginstackComponent =() => {
   return (
   <Stacklogin.Navigator  headerMode="none">   
@@ -92,6 +101,26 @@ const LoginstackComponent =() => {
   );
 }
 
+const VendorstackComponent =() => {
+  return (
+  <Stackvendor.Navigator  headerMode="none">  
+  <Stackvendor.Screen name="VendorhomeScreen" component={VendorhomeScreen} /> 
+  <Stackvendor.Screen name="Vendor" component={VendorScreen}  />   
+  <Stackvendor.Screen name="editVendor" component={editvendorScreen}  />          
+  <Stackvendor.Screen name="VendorhomeitemScreen" component={VendorhomeitemScreen } />
+  </Stackvendor.Navigator>
+  ); 
+}
+
+const Vendorhomestack =() => {
+  return (
+  <Stackvendorhome.Navigator  headerMode="none">   
+  <Stackvendorhome.Screen name="VendorhomeScreen" component={VendorhomeScreen}  />                
+  <Stackvendorhome.Screen name="VendorhomeitemScreen" component={VendorhomeitemScreen } />
+  <Stackvendorhome.Screen name="Vendor" component={VendorScreen} />  
+  </Stackvendorhome.Navigator>
+  );
+}
 
 const SignupstackComponent =() => {
   return (
@@ -135,7 +164,8 @@ const App= ({ navigation }) => {
     <Stack.Screen name="Home" component={HomestackComponent} />  
     <Stack.Screen name="loading" component={LoadingScreen} />
     <Stack.Screen name="signup" component={SignupstackComponent} />
-    <Stack.Screen name="Vendor" component={VendorStackNavigation } />   
+    <Stack.Screen name="Vendor" component={VendorstackComponent} />
+   
   </Stack.Navigator>
   </NavigationContainer>
   );

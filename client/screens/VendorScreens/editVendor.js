@@ -6,9 +6,7 @@ import styles from '../../assets/css/style.js';
 
 const editvendorScreen = ({ route, navigation }) => {
 
-    return (
-     
-        
+return (        
 
 <View>
 <Text style={styles.itemtitle}> Edit Vendor</Text>
@@ -34,13 +32,11 @@ const editvendorScreen = ({ route, navigation }) => {
   />
  <Text></Text>
   <Button
-               mode="contained"               
-                 title="BACK"      
-                 onPress={() =>navigation.navigate('Home')}      
-        />
+         mode="contained"               
+         title="BACK"      
+         onPress={() => navigation.goBack()}
+  />
   </View>
-
-
     );
 };
 

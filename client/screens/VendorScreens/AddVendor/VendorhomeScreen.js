@@ -50,4 +50,3 @@ const VendorhomeScreen = () =>{
 
 export default VendorhomeScreen
 
-

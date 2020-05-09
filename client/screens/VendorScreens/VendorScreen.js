@@ -1,31 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Button,StyleSheet,SafeAreaView,TouchableOpacity,TextInput } from "react-native";
+import { View, Text, FlatList,Modal, Button,StyleSheet,SafeAreaView,TouchableOpacity,TouchableHighlight,TextInput ,Image} from "react-native";
 import { ListItem, SearchBar } from "react-native-elements";
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../../assets/css/style.js';
 import VendorhomeScreen from './AddVendor/VendorhomeScreen';
+import {useNavigation} from '@react-navigation/native';
+import { ConfirmDialog } from 'react-native-simple-dialogs';
 
-
-const VendorScreen = ({navigation})=> {
+const VendorScreen = ()=> {
   const [selected, setSelected] = useState(new Map());  
+
+  const [selected1, setSelected1] = useState(new Map()); 
   const [data, setData] = useState([]);
   const [query, setQuery] = useState('');
   const [filteredDataList, setFilteredDataList] = useState(dataList); 
   const [loading, setLoading] = useState(false);
+  const navigation =useNavigation();
+  const [modalVisible, setModalVisible] = useState(false);
 
   const onSelect = React.useCallback(
     id => {
       const newSelected = new Map(selected);     
       newSelected.set(id, !selected.get(id));     
-      setSelected(newSelected);
+      setSelected(newSelected);      
     },
     [selected],
   );
 
+  const onSelect1 = React.useCallback(
+    id => {
+      const newSelected1 = new Map(selected1);     
+      newSelected1.set(id, !selected.get(id));     
+      setSelected(newSelected1);      
+    },
+    [selected1],
+  );
+
   const onPress1=(item)=> {
     props.navigation.navigate('Home', {post3:data});
-    
-  }
+   }
 
  //Fetch data
   async function fetchData() {
@@ -87,7 +100,7 @@ const FlatListItemSeparator = () => {
 
 
 const renderData= ({item })=> {
-  //selected=!!selected.get(item.id)
+  
   return (    
   <>
     <View>       
@@ -100,14 +113,16 @@ const renderData= ({item })=> {
     <Text style={styles.detailButton}>See More</Text>
     </TouchableOpacity>
     <TouchableOpacity 
-      onPress={() => {
+       onPress={() => {
         /* 1. Navigate to the Details route with params */
        navigation.navigate('editVendor',{ post:item});
       }}>
     <Text style={styles.detailButton}>Edit</Text>
     </TouchableOpacity>
-    <TouchableOpacity >
-        <Text style={styles.detailButton}>Delete</Text>
+    <TouchableOpacity 
+    // onPress={() => onSelect1(item.id)}
+    >
+      <Text style={styles.detailButton}>Delete</Text>
     </TouchableOpacity>              
    </View>                 
   </View> 
@@ -115,14 +130,20 @@ const renderData= ({item })=> {
         item={item}
         id={item.id}
         selected={!!selected.get(item.id)}
-         onSelect={onSelect}
-       
+         onSelect={onSelect}       
     /> 
-   
+  {/*<RowItem1
+        item={item}
+        id={item.id}
+        selected1={!!selected1.get(item.id)}
+         onSelect1={onSelect1}       
+  /> */}
+
     </>
   );
 }
 
+ 
 function RowItem({ id,item,selected, onSelect }) {
   return (
   <>
@@ -142,14 +163,34 @@ function RowItem({ id,item,selected, onSelect }) {
 }
 
 
+ 
+/*function RowItem1({ id,item,selected1, onSelect1 }) {
+  return (
+  <>
+   {  
+    selected1
+    ?
+    <>
+    <Text style={styles.dataContainer}>{item.address.street}</Text>  
+    <Text style={styles.dataContainer}>{`${item.address.city}-${item.address.zipcode}`}</Text>
+    </>
+    :
+    <Text></Text>
+    }
+ 
+    </>
+  );
+}
+*/
+
 return (
 <SafeAreaView style={styles.container}>
 <>
 <Button
-        title="Go to Details"
+        title="ADD VENDOR"
         onPress={() => 
           /* 1. Navigate to the Details route with params */
-         navigation.navigate('editvendorScreen')}
+         navigation.navigate('VendorhomeScreen')}
   />
 <FlatList
     data={data}
