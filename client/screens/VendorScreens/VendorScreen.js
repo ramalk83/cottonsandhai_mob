@@ -183,7 +183,7 @@ function RowItem1({ id,item,selected1, onSelect1 }) {
     <View style={styles.centeredView}>
       <View style={styles.modalView}>
         <Text style={styles.modalText}>Are you sure you want to delete?</Text>
-        <Text style={styles.dataContainer}>{id}</Text> 
+        <Text style={styles.dataContainer}>{`Id : ${id}`}</Text> 
         <View style={{ flexDirection: 'row'}}>
         <TouchableHighlight
           style={{ ...styles.openButton, backgroundColor: "#2196F3" }}>

@@ -7,7 +7,7 @@ import VendorhomeScreen from '../../VendorScreens/AddVendor/VendorhomeScreen';
 import VendorhomeitemScreen from '../../VendorScreens/AddVendor/HomeItem';
 import editvendorScreen from '../../VendorScreens/editVendor';
 
-import Vendorhomestack from './Vendorhomestack';
+
 
 const Stackvendor=createStackNavigator();
 
@@ -18,7 +18,7 @@ const Stackvendor=createStackNavigator();
     <Stackvendor.Screen name="Vendor" component={VendorScreen}  />   
     <Stackvendor.Screen name="VendorhomeScreen" children={VendorhomeScreen} /> 
     <Stackvendor.Screen name="VendorhomeitemScreen" component={VendorhomeitemScreen } />
-    <Stackvendor.Screen name="editVendor" component={editvendorScreen}  />          
+    <Stackvendor.Screen name="editVendor" component={editvendorScreen}  />        
    
     </Stackvendor.Navigator>
     ); 
