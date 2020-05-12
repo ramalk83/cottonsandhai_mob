@@ -3,9 +3,9 @@ import { View, Text, FlatList,Modal, Button,StyleSheet,SafeAreaView,TouchableOpa
 import { ListItem, SearchBar } from "react-native-elements";
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../../assets/css/style.js';
-import VendorhomeScreen from './AddVendor/VendorhomeScreen';
+import VendorhomeScreen from './VendorhomeScreen';
 import {useNavigation} from '@react-navigation/native';
-import { ConfirmDialog } from 'react-native-simple-dialogs';
+
 
 const VendorScreen = ()=> {
   const [selected, setSelected] = useState(new Map());  
@@ -83,6 +83,12 @@ const renderHeader = () => {
       value={query}
       onChangeText={setQuery}
   /> 
+  <Button
+        title="ADD VENDOR"
+        onPress={() => 
+          /* 1. Navigate to the Details route with params */
+         navigation.navigate('VendorhomeScreen')}
+  />
 </>
 }
     
@@ -104,6 +110,13 @@ const renderData= ({item })=> {
     <View>       
     <Text style={styles.titleContainer}>{item.name}</Text>
     <Text style={styles.dataContainer}>{item.email}</Text>  
+    {/* See more */}
+  <RowItem
+        item={item}
+        id={item.id}
+        selected={!!selected.get(item.id)}
+        onSelect={onSelect}       
+    /> 
     <View style={{ flexDirection: 'row'}}>
 
     <TouchableOpacity
@@ -126,14 +139,10 @@ const renderData= ({item })=> {
     </TouchableOpacity> 
    </View>                 
   </View> 
+ 
+ 
 
-  <RowItem
-        item={item}
-        id={item.id}
-        selected={!!selected.get(item.id)}
-         onSelect={onSelect}       
-    /> 
-
+ {/* Delete */}
   <RowItem1
         item={item}
         id={item.id}
@@ -145,7 +154,7 @@ const renderData= ({item })=> {
   );
 }
 
- 
+//See more Item
 function RowItem({ id,item,selected, onSelect }) {
   return (
   <>
@@ -165,7 +174,7 @@ function RowItem({ id,item,selected, onSelect }) {
 }
 
 
- 
+ //Delete Item
 function RowItem1({ id,item,selected1, onSelect1 }) {
   return (
   <>
@@ -212,12 +221,7 @@ function RowItem1({ id,item,selected1, onSelect1 }) {
 return (
 <SafeAreaView style={styles.container}>
 <>
-<Button
-        title="ADD VENDOR"
-        onPress={() => 
-          /* 1. Navigate to the Details route with params */
-         navigation.navigate('VendorhomeScreen')}
-  />
+
 <FlatList
     data={data}
     ListHeaderComponent={renderHeader}
@@ -230,4 +234,5 @@ return (
 </SafeAreaView>
   );
 }
+
 export default VendorScreen;

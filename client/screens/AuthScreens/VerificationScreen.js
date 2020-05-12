@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { AsyncStorage } from 'react-native';
 import styles from '../../assets/css/style';
-//import AddVendor from '../VendorScreen/AddVendor';
+//import AddVendor from '../VendorScreens/AddVendor';
 
 const VerificationScreen = (props) => {
   const [email, setEmail] = useState("loading")

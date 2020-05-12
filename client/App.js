@@ -19,6 +19,7 @@ import LoginScreen from './screens/AuthScreens/LoginScreen'
 import LoadingScreen from './screens/AuthScreens/LoadingScreen';
 import HomeScreen from './screens/AuthScreens/HomeScreen'
 import LogoutScreen from './screens/AuthScreens/LogoutScreen';
+import VerificationScreen from './screens/AuthScreens/VerificationScreen';
 
 import NotificationScreen from './screens/ContactScreens/NotificationScreen';
 import AccountScreen from './screens/ContactScreens/AccountScreen';
@@ -33,6 +34,7 @@ const Drawer = createDrawerNavigator();
 const Stack=createStackNavigator();
 const Stacklogin=createStackNavigator();
 const Stacksignup=createStackNavigator();
+const Stackverification=createStackNavigator();
 const StackHome=createStackNavigator();
 const StackTrade=createStackNavigator();
 const Stacklogout=createStackNavigator();
@@ -87,6 +89,7 @@ const LoginstackComponent =() => {
   <Stacklogin.Screen name="Login" component={LoginScreen}  />                
   <Stacklogin.Screen name="Home" component={HomestackComponent} />
   <Stacklogin.Screen name="Loading" component={LoadingScreen} />
+  <Stacklogin.Screen name="verification" component={verificationstackComponent} />
   <Stacklogin.Screen name="Signup" component={SignupScreen} />
   </Stacklogin.Navigator>
   );
@@ -96,13 +99,26 @@ const LoginstackComponent =() => {
 const SignupstackComponent =() => {
   return (
   <Stacksignup.Navigator  headerMode="none">  
-  <Stacksignup.Screen name="Signup" component={SignupScreen} />           
+  <Stacksignup.Screen name="Signup" component={SignupScreen} />  
+  <Stacksignup.Screen name="Login" component={LoginScreen}  />                         
   <Stacksignup.Screen name="Home" component={HomestackComponent} />
+  <Stacksignup.Screen name="verification" component={verificationstackComponent} />
   <Stacksignup.Screen name="Loading" component={LoadingScreen} />
   </Stacksignup.Navigator>
   );
 }
 
+const verificationstackComponent =() => {
+  return (
+  <Stackverification.Navigator  headerMode="none">  
+  <Stackverification.Screen name="Signup" component={SignupScreen} />  
+  <Stackverification.Screen name="Login" component={LoginScreen}  />                         
+  <Stackverification.Screen name="Home" component={HomestackComponent} />
+  <Stackverification.Screen name="verification" component={VerificationScreen} />
+  <Stackverification.Screen name="Loading" component={LoadingScreen} />
+  </Stackverification.Navigator>
+  );
+}
 const LogoutstackComponent =() => {
   return (
   <Stacklogout.Navigator  headerMode="none">  
@@ -136,6 +152,7 @@ const App= ({ navigation }) => {
     <Stack.Screen name="loading" component={LoadingScreen} />
     <Stack.Screen name="signup" component={SignupstackComponent} />
     <Stack.Screen name="Vendor" component={VendorStackNavigation } />   
+    <Stack.Screen name="verification" component={VerificationScreen} />
   </Stack.Navigator>
   </NavigationContainer>
   );

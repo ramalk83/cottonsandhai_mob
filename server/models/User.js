@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt')
 const userSchema = new mongoose.Schema({
+    userId:{
+        type:Number,
+        required:true       
+    },
     email:{
         type:String,
         unique:true,
@@ -9,6 +13,27 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true
+    },
+    provider: {
+        type: String,
+        required:true
+    },
+    createdOn:{
+        type:Date,
+        default:Date.now  
+      },
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    verifiedOn:{
+      type:Date,
+    },
+    passwordChangedOn:{
+        type:Date
+    },
+    passwordChangedType:{
+        type:String
     }
 })
 
