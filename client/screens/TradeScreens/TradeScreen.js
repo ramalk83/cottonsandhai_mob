@@ -4,7 +4,7 @@ import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import styles from '../../assets/css/style.js';
 
-const TradeScreen = ({navigation}) => {
+const TradeScreen = (props) => {
     return (
       <View style={styles.containerr}>
         <Text style={styles.welcomeTextCont}>Trade Screen</Text>
@@ -12,7 +12,7 @@ const TradeScreen = ({navigation}) => {
           mode="contained"
           style={styles.logoutButton}
             title="BACK"
-            onPress={() => navigation.goBack()}
+            onPress={() => props.navigation.goBack()}
         />
       </View>
     );

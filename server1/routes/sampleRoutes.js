@@ -65,10 +65,10 @@ router1.post('/signin', async (req, res) => {
   if (!user) {
     return res.status(422).send({ error: "must provide email or password" })
   }
-  /*if (!user.isVerified) {
+  if (!user.isVerified) {
     console.log('please verify your email')
     return res.status(422).send({ error: "please verify your email" })
-  }*/
+  }
   try {
     await user.comparePassword(password);
     const token = jwt.sign({ userId: user._id }, jwtkey)

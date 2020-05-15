@@ -31,7 +31,7 @@ const MainTabScreen = () => (
       component={HomeStackScreen}
       options={{
         tabBarLabel: 'Home',
-        tabBarColor: 'lightgray',
+        tabBarColor: 'white',
         tabBarIcon: ({color}) => (
           <Icon name="ios-home" color='black' size={26} />
         ),
@@ -42,7 +42,7 @@ const MainTabScreen = () => (
       component={DetailsStackScreen}
       options={{
         tabBarLabel: 'Notification',
-        tabBarColor: 'lightgray',
+        tabBarColor: 'white',
         tabBarIcon: ({color}) => (
           <Icon name="ios-notifications" color='black' size={26} />
         ),
@@ -53,7 +53,7 @@ const MainTabScreen = () => (
       component={AccountStackScreen}
       options={{
         tabBarLabel: 'Account',
-        tabBarColor: 'lightgray',
+        tabBarColor: 'white',
         tabBarIcon: ({color}) => (
           <Icon name="ios-person" color='black' size={26} />
         ),
@@ -70,7 +70,7 @@ const HomeStackScreen = () => (
 <HomeStack.Screen name="Home" component={HomeScreen} />
 <HomeStack.Screen name="Help" component={HelpScreen} />
 <HomeStack.Screen name="Logout" component={LogoutScreen} />
-<HomeStack.Screen name="Trade" component={TradeStackScreen} />
+<HomeStack.Screen name="Trade" component={TradeScreen} />
 <HomeStack.Screen name="Vendor" component={VendorStackNavigation} />
 </HomeStack.Navigator>
 );
@@ -80,7 +80,7 @@ const DetailsStackScreen = () => (
 <DetailsStack.Screen name="Notification" component={NotificationScreen}  />
 <DetailsStack.Screen name="Help" component={HelpScreen} />
 <DetailsStack.Screen name="Logout" component={LogoutScreen} />
-<DetailsStack.Screen name="Vendor" component={VendorScreen} />
+<DetailsStack.Screen name="Vendor" component={VendorStackNavigation} />
 </DetailsStack.Navigator>
 );
 
@@ -90,13 +90,7 @@ const AccountStackScreen = () => (
   <AccountStack.Screen name="Account" component={AccountScreen} />
   <AccountStack.Screen name="Help" component={HelpScreen} />
   <AccountStack.Screen name="Logout" component={LogoutScreen} />
-  <AccountStack.Screen name="Vendor" component={VendorScreen} />
+  <AccountStack.Screen name="Vendor" component={VendorStackNavigation} />
   </AccountStack.Navigator>
   );
     
-  const TradeStackScreen = () => (
-    <TradeStack.Navigator  headerMode="none">
-    <TradeStack.Screen name="Account" component={TradeScreen} />
-    </TradeStack.Navigator>
-  );
-      

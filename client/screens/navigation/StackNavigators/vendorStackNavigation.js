@@ -10,10 +10,21 @@ const Stackvendor=createStackNavigator();
  
    const VendorStackNavigation =() => {
     return (
-    <Stackvendor.Navigator  headerMode="none"  initialRouteName="Vendor">  
-    <Stackvendor.Screen name="Vendor" component={VendorScreen}  />   
-    <Stackvendor.Screen name="VendorhomeScreen" children={VendorhomeScreen} />   
-    <Stackvendor.Screen name="editVendor" component={editvendorScreen}  />        
+    <Stackvendor.Navigator   initialRouteName="Vendor">  
+    <Stackvendor.Screen name="Vendor" 
+    component={VendorScreen} 
+    //options={{title:'Vendor Screen'}}
+    />   
+    <Stackvendor.Screen name="VendorhomeScreen" 
+    component={VendorhomeScreen} 
+    
+    //options={({route})=>({title:route.params.name})}
+    />   
+    <Stackvendor.Screen name="editVendor" 
+    component={editvendorScreen}  
+    
+    //options={({route})=>({title:route.params.name})}
+    />        
      </Stackvendor.Navigator>
     ); 
   }

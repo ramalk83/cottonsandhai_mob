@@ -50,7 +50,7 @@ const VendorhomeScreen = () =>{
   );
 }
 
-
+export default VendorhomeScreen;
 
   
 const HomeItem = ({ title,id }) => {
@@ -224,4 +224,3 @@ return (
 
 
 
-export default VendorhomeScreen

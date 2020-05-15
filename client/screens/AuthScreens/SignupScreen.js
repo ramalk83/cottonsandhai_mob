@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button, TextInput } from 'react-native-paper';
 import {
@@ -15,7 +14,6 @@ import LogoImg from '../../assets/images/logo.jpg';
 import styles from '../../assets/css/style';
 
 const SignupScreen = (props) => {
-
   const [email, setEmail] = useState('');
   const [password1, setPassword1] = useState('')
   const [password, setPassword] = useState('')
@@ -67,7 +65,7 @@ const SignupScreen = (props) => {
           <TouchableOpacity>
             <Text
               style={styles.signinTextCont}
-              onPress={() => props.navigation.replace("login")}
+              onPress={() => props.navigation.replace("Login")}
             >Already have an account? Sign In</Text>
           </TouchableOpacity>
         </KeyboardAvoidingView>

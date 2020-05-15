@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Button, TextInput } from 'react-native-paper';
 import {
@@ -23,7 +22,7 @@ const VerificationScreen = (props) => {
     }).then(res => res.json())
       .then(data => {
         console.log(data)
-        // setEmail(data.email)
+        setEmail(data.email)
       })
   }
   useEffect(() => {

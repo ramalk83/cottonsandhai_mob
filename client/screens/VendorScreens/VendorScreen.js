@@ -87,7 +87,9 @@ const renderHeader = () => {
         title="ADD VENDOR"
         onPress={() => 
           /* 1. Navigate to the Details route with params */
-         navigation.navigate('VendorhomeScreen')}
+         navigation.navigate('VendorhomeScreen'
+         ,{ name: 'Add Vendor' }
+         )}
   />
 </>
 }
@@ -127,8 +129,10 @@ const renderData= ({item })=> {
 
     <TouchableOpacity 
        onPress={() => {
-        /* 1. Navigate to the Details route with params */
-       navigation.navigate('editVendor',{ post:item});
+       
+       navigation.navigate('editVendor',{ 
+         name:'Edit Vendor',
+         post:item});
       }}>
     <Text style={styles.detailButton}>Edit</Text>
     </TouchableOpacity>

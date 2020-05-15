@@ -8,9 +8,7 @@ import {
 } from 'react-native';
 import { AsyncStorage } from 'react-native';
 import styles from '../../assets/css/style';
-import VendorScreen from '../VendorScreens/VendorScreen';
-import LogoutScreen from '../AuthScreens/LogoutScreen';
-import TradeScreen from '../TradeScreens/TradeScreen';
+import  CustomHeader  from '../navigation/CustomHeader';
 
 
 const HomeScreen = (props) => {
@@ -31,41 +29,43 @@ const HomeScreen = (props) => {
     Boiler()
   }, [])
 
-  const logout = (props) => {
+ /* const logout = (props) => {
     AsyncStorage.removeItem("token").then(() => {
-      props.navigation.replace("Logout")
+      props.navigation.navigate("Logout"
+      //,{ name: 'Logout' }
+      )
     })
-  }
+  }*/
 
   const addVendor = (props) => {
-    props.navigation.replace("Vendor");
+    props.navigation.navigate("Vendor"
+    ,{ name: 'Vendor' }
+    );
   };
 
   const addTrade = (props) => {
-    props.navigation.replace("Trade");
+    props.navigation.navigate("Trade"
+    ,{ name: 'Trade' }
+    );
   };
   return (
     <>
+    <CustomHeader title="Home" isHome={true}/>
       <View style={styles.container}>
         <Text style={styles.welcomeTextCont}>Welcome!, Your email is {email}</Text>
-        <Button
-          mode="contained"
-          style={styles.logoutButton}
-          onPress={() => logout(props)}>
-          logout
-      </Button>
+      
         <Button
           mode="contained"
           style={styles.logoutButton}
           onPress={() => addVendor(props)}>
           Vendor
       </Button>
-      <Button
+     <Button
           mode="contained"
-          style={styles.logoutButton}
-          onPress={() => {{props.navigation.navigate('Trade')}}}>
+          style={styles.logoutButton}          
+          onPress={() => addTrade(props)}>
           Trade
-      </Button>
+     </Button>
       </View>
     </>
   );

@@ -7,7 +7,7 @@ const User = mongoose.model('User');
 const nodemailer = require('nodemailer')
 
 const transporter = nodemailer.createTransport({
-  service: 'Gmail',
+  service: 'gmail',
   secure: false,
   port: 25,
   tls: {
@@ -65,16 +65,20 @@ router.get('/confirmation/:token', async (req, res) => {
 
 
 router.post('/signin', async (req, res) => {
+  console.log("signin")
+
   const { email, password } = req.body
   console.log(email)
   console.log(password)
   if (!email || !password) {
     return res.status(422).send({ error: "must provide email or password" })
+    console.log("server no data")
   }
   const user = await User.findOne({ email })
   console.log(user)
   if (!user) {
     return res.status(422).send({ error: "must provide email or password" })
+    console.log("server user no match")
   }
   if (!user.isVerified) {
     console.log('please verify your email')
@@ -84,6 +88,7 @@ router.post('/signin', async (req, res) => {
     await user.comparePassword(password);
     const token = jwt.sign({ userId: user._id }, jwtkey)
     res.send({ token })
+    console.log('Success')
   }
   catch (err) {
     return res.status(422).send({ error: "must provide email or password" })
