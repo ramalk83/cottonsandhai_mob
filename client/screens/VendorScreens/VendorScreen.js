@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../../assets/css/style.js';
 import VendorhomeScreen from './VendorhomeScreen';
 import {useNavigation} from '@react-navigation/native';
-
+import  CustomHeader  from '../navigation/CustomHeader';
 
 const VendorScreen = ()=> {
   const [selected, setSelected] = useState(new Map());  
@@ -225,7 +225,7 @@ function RowItem1({ id,item,selected1, onSelect1 }) {
 return (
 <SafeAreaView style={styles.container}>
 <>
-
+<CustomHeader title="Vendor" isHome={true} navigation={navigation}/>
 <FlatList
     data={data}
     ListHeaderComponent={renderHeader}

@@ -7,7 +7,7 @@ const StackTrade=createStackNavigator();
 
 const TradeStackNavigation =() => {
     return (
-    <StackTrade.Navigator >  
+    <StackTrade.Navigator headerMode="none">  
     <StackTrade.Screen name="Trade" component={TradeScreen} options={{title:'Trade Screen'}}/>          
     </StackTrade.Navigator>
     );

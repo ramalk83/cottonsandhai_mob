@@ -1,4 +1,4 @@
-import React,{useEffect,useState,Component} from 'react';
+  import React,{useEffect,useState,Component} from 'react';
 
 import { Button ,TextInput} from 'react-native-paper';
 import {View, Text, StyleSheet, Image, Modal} from 'react-native';
@@ -7,9 +7,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { CustomDrawerContent } from './screens/navigation/CustomDrawerContent';
+
+
 import MainTabScreen from './screens/navigation/MainTabScreen';
 import VendorStackNavigation  from './screens/navigation/StackNavigators/vendorStackNavigation';
 import TradeStackNavigation  from './screens/navigation/StackNavigators/TradeStackNavigation';
+import HomeStackNavigation  from './screens/navigation/StackNavigators/HomeStackNavigation';
 
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation, DrawerActions} from '@react-navigation/native';
@@ -30,16 +33,17 @@ import ContactScreen from './screens/ContactScreens/ContactScreen';
 
 
 import { AsyncStorage } from 'react-native';
+//import DrawerNavigator from 'react-navigation-drawer/lib/typescript/src/navigators/createDrawerNavigator';
 
 const Drawer = createDrawerNavigator();
 const Stack=createStackNavigator();
 const Stacklogin=createStackNavigator();
 const StackHome=createStackNavigator();
-
 const Stacksignup=createStackNavigator();
 const Stackverification=createStackNavigator();
-
 const Stacklogout=createStackNavigator();
+
+
 
 const HeaderLeft = () => {
   const navigation = useNavigation();  
@@ -59,8 +63,10 @@ const HeaderLeft = () => {
 const DrawerComponent = () => {
   return (
    <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
-   <Drawer.Screen component={MainTabScreen} name="Main" />
   
+   <Drawer.Screen name="Home" 
+   component={MainTabScreen} 
+   />
    <Drawer.Screen name="Vendor" 
    component={VendorStackNavigation} 
    />
@@ -80,18 +86,6 @@ const DrawerComponent = () => {
   );
 };
 
-const HomestackComponent =() => {
-  return (
-  <StackHome.Navigator >   
-   <StackHome.Screen
-          options={{headerLeft: ({}) => <HeaderLeft />}}
-          component={DrawerComponent}
-          name="Cotton Sandhai"
-    />
-  <StackHome.Screen name="Home" component={MainTabScreen}  />   
-  </StackHome.Navigator>
-  );
-}
 
 
 const LoginstackComponent =() => {
@@ -99,29 +93,27 @@ const LoginstackComponent =() => {
     
   <Stacklogin.Navigator  headerMode="none">   
   <Stacklogin.Screen name="Login" 
-  component={LoginScreen} options={{title:'Login'}}
+  component={LoginScreen} 
    />                
-  <Stacklogin.Screen name="Home" 
-  component={HomestackComponent} options={{title:'Home'}}
-  />
+  
   <Stacklogin.Screen name="Loading" 
-  component={LoadingScreen} options={{title:'Loading'}}
+  component={LoadingScreen} 
   />
 <Stacklogin.Screen name="verification"
-   component={VerificationScreen} options={{title:'Verification'}}
+   component={VerificationScreen} 
   />
   <Stacklogin.Screen name="Logout"
-   component={LogoutScreen} options={{title:'Logout'}}
+   component={LogoutScreen} 
   />
   <Stacklogin.Screen name="Signup" 
-  component={SignupScreen} options={{title:'Signup'}}
+  component={SignupScreen} 
+  />
+   <Stacklogin.Screen name="Home" 
+  component={HomeStackNavigation} 
   />
   </Stacklogin.Navigator>
   );
 }
-
-
-
 
 const App= ({ navigation }) => {
    const [isloggedin,setLogged] = useState(null)
@@ -145,18 +137,14 @@ const App= ({ navigation }) => {
     ?  
          
 
-<StackHome.Navigator
-    headerMode="screen"
-    options={{headerLeft: ({}) => <HeaderLeft />}}>
-      <StackHome.Screen name="Home" component={MainTabScreen}  />   
-     </StackHome.Navigator> 
-        : 
-       
-        <Stack.Navigator  headerMode="none" initialRouteName="Login"> 
-        <Stack.Screen name="Login" component={LoginstackComponent}  />                    
-      
-     
-      </Stack.Navigator>
+<StackHome.Navigator  headerMode="none">   
+<StackHome.Screen  name="HomeDraw" component={DrawerComponent}  />                    
+</StackHome.Navigator> 
+:   
+<Stack.Navigator  headerMode="none" initialRouteName="Login"> 
+<Stack.Screen name="Login" component={LoginstackComponent}  />                    
+  
+</Stack.Navigator>
       
   }
   </NavigationContainer>

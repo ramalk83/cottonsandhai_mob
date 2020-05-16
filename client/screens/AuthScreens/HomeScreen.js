@@ -11,7 +11,7 @@ import styles from '../../assets/css/style';
 import  CustomHeader  from '../navigation/CustomHeader';
 
 
-const HomeScreen = (props) => {
+const HomeScreen = ({navigation}) => {
   const [email, setEmail] = useState("loading")
   const Boiler = async () => {
     const token = await AsyncStorage.getItem("token")
@@ -37,33 +37,23 @@ const HomeScreen = (props) => {
     })
   }*/
 
-  const addVendor = (props) => {
-    props.navigation.navigate("Vendor"
-    ,{ name: 'Vendor' }
-    );
-  };
-
-  const addTrade = (props) => {
-    props.navigation.navigate("Trade"
-    ,{ name: 'Trade' }
-    );
-  };
+ 
   return (
     <>
-    <CustomHeader title="Home" isHome={true}/>
+    <CustomHeader title="Home" isHome={true} navigation={navigation}/>
       <View style={styles.container}>
         <Text style={styles.welcomeTextCont}>Welcome!, Your email is {email}</Text>
       
         <Button
           mode="contained"
           style={styles.logoutButton}
-          onPress={() => addVendor(props)}>
+          onPress={() =>navigation.navigate("Vendor")}>
           Vendor
       </Button>
      <Button
           mode="contained"
           style={styles.logoutButton}          
-          onPress={() => addTrade(props)}>
+          onPress={() => navigation.navigate("Trade")}>
           Trade
      </Button>
       </View>

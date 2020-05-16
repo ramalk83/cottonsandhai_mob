@@ -10,7 +10,7 @@ const Stackvendor=createStackNavigator();
  
    const VendorStackNavigation =() => {
     return (
-    <Stackvendor.Navigator   initialRouteName="Vendor">  
+    <Stackvendor.Navigator  headerMode="none" initialRouteName="Vendor">  
     <Stackvendor.Screen name="Vendor" 
     component={VendorScreen} 
     //options={{title:'Vendor Screen'}}

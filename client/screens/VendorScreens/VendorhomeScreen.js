@@ -4,6 +4,7 @@ TouchableWithoutFeedback,TouchableOpacity,Image} from 'react-native';
 import Constants from 'expo-constants';
 import VendorScreen from './VendorScreen'
 import styles from '../../assets/css/style.js';
+import  CustomHeader  from '../navigation/CustomHeader';
 
 const images={
   expand:require('../../assets/images/downArrow.png')
@@ -32,10 +33,13 @@ const DATA = [
   },
 ];
 
-const VendorhomeScreen = () =>{
+const VendorhomeScreen = ({navigation}) =>{
+
   return (
+    <>
+    <CustomHeader title="Add Vendor" navigation={navigation}/>   
     <View style={styles.container}>
-      <Text style={styles.itemtitle}>Add Vendor</Text>
+     
       <FlatList
         data={DATA}
         renderItem={({ item }) => <HomeItem 
@@ -47,6 +51,7 @@ const VendorhomeScreen = () =>{
          <Text style={styles.loginButton}>Submit</Text>
       </TouchableOpacity>       
     </View>
+    </>
   );
 }
 

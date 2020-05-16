@@ -7,15 +7,13 @@ import HomeScreen from '../../AuthScreens/HomeScreen'
 
 const StackHome=createStackNavigator();
 
-const navOptionHandler=()=>{
-    headerShown:false;
-  }
+
 const HomeStackNavigation =() => {
     return (
-    <StackHome.Navigator >  
-    <StackHome.Screen name="Home" component={HomeScreen} options={navOptionHandler}/>          
-    <StackHome.Screen name="Vendor" component={VendorStackNavigation} options={navOptionHandler}/>          
-    <StackHome.Screen name="Trade" component={TradeStackNavigation} options={navOptionHandler}/>          
+    <StackHome.Navigator  headerMode="none" >  
+    <StackHome.Screen name="Home" component={HomeScreen} />          
+    <StackHome.Screen name="Vendor" component={VendorStackNavigation} />          
+    <StackHome.Screen name="Trade" component={TradeStackNavigation} />          
     </StackHome.Navigator>
     );
   }

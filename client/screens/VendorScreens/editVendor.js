@@ -3,13 +3,15 @@
 import React from 'react';
 import { View, TextInput,Text, Button, StyleSheet } from 'react-native';
 import styles from '../../assets/css/style.js';
+import  CustomHeader  from '../navigation/CustomHeader';
 
 const editvendorScreen = ({ route, navigation }) => {
 
 return (        
-
+<>
+<CustomHeader title="Edit Vendor" navigation={navigation}/>   
 <View>
-<Text style={styles.itemtitle}> Edit Vendor</Text>
+{/*<Text style={styles.itemtitle}> Edit Vendor</Text>*/}
     <TextInput style={styles.userinputText} placeholder="Enter insurance no"
          value={route.params?.post.name} placeholderTextColor = "gray"
          
@@ -37,6 +39,7 @@ return (
          onPress={() => navigation.goBack()}
   />
   </View>
+  </>
     );
 };
 
