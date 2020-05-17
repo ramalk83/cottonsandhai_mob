@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import styles from '../../assets/css/style.js';
 import { AsyncStorage } from 'react-native';
-
+import  CustomHeader  from '../navigation/CustomHeader';
 
 
 const LogoutScreen = (props) => {
@@ -26,12 +26,12 @@ const LogoutScreen = (props) => {
 
  const logout = (props) => {
     AsyncStorage.removeItem("token").then(() => {
-      props.navigation.navigate("Login"
-      //,{ name: 'Logout' }
-      )
+      props.navigation.navigate( "Login" )
     })
   }
     return (
+      <>
+      <CustomHeader title="Logout" isHome={true} navigation={props}/>
       <View style={styles.containerr}>
       <Text style={styles.welcomeTextCont}>Are you sure ?</Text>
       <Button
@@ -48,6 +48,7 @@ const LogoutScreen = (props) => {
               onPress={() => {{props.navigation.navigate('Home')}}}
       />
     </View>
+    </>
     );
 };
 

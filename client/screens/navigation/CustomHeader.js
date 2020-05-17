@@ -1,16 +1,21 @@
 import React,{useEffect,useState,Component} from 'react';
 import { Button ,TextInput} from 'react-native-paper';
 import {View, Text, StyleSheet, Image, Modal,TouchableOpacity} from 'react-native';
-//import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import {useNavigation, DrawerActions} from '@react-navigation/native';
 
 function CustomHeader({title,isHome,navigation}){
     return(
-   <View style={{flexDirection:'row',height:50}}>
+   <View style={{flexDirection:'row',height:50,borderBottomColor:'gray',backgroundColor:'white',borderBottomWidth:0.5}}>
      <View style={{flex:1,justifyContent:'center'}}>
       {
        isHome ?  
 
-       <TouchableOpacity onPress={()=>navigation.toggleDrawer()}>
+       <TouchableOpacity 
+            onPress={() => 
+            //navigation.dispatch(DrawerActions.toggleDrawer());
+            navigation.dispatch(DrawerActions.openDrawer())
+         }>
         <Image style={{width:30,height:30,marginLeft:5}}
           source={require('../../assets/images/menu.png')}
           resizeMethod="auto"/>
@@ -26,11 +31,13 @@ function CustomHeader({title,isHome,navigation}){
         }
         </View>
         <View style={{flex:1.5,justifyContent:'center'}}>
-          <Text style={{textAlign:'center'}}>{title}</Text>
+          <Text style={{textAlign:'center',fontSize:18,fontWeight: 'bold'}}>{title}</Text>
           </View>
         <View style={{flex:1}}></View>
       </View>
     )
   }
+
+
 
   export default CustomHeader

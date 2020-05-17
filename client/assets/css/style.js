@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
+import { getOrientationAsync } from 'expo/build/ScreenOrientation/ScreenOrientation';
 
 
 export default StyleSheet.create({
@@ -23,13 +24,7 @@ export default StyleSheet.create({
           textAlign: 'center',
           marginBottom:50
         },
-        userinputText:{
-          marginLeft:40,
-          marginRight:40,
-          marginTop:18,
-          marginBottom:8,
-          backgroundColor:'#fadadd'
-        },
+        
         signupTextCont:{
           fontSize:18,
           marginTop:130,
@@ -150,7 +145,9 @@ containers: {
     marginTop:18,
     borderColor:"gray",
     borderWidth:1,
-    borderRadius:5
+    borderRadius:5,
+    backgroundColor:'white',
+    
   },
 
   signinTextCont:{
@@ -189,6 +186,7 @@ item: {
     marginLeft:40,
     marginRight:40,
     marginTop:30,
+    
     backgroundColor: '#1c313a',
     color:'#fff',
     fontSize:20,

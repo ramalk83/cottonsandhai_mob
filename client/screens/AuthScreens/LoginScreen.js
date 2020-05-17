@@ -37,11 +37,11 @@ const LoginScreen = (props) => {
         if (typeof data.token!=='undefined'&& data.token !== null) {
           console.log(data.token)
           await AsyncStorage.setItem('token', data.token)
-          props.navigation.replace("Home")
+          props.navigation.navigate("Home")
         } else {
           console.log("data token is null")
           // Alert(e)
-          props.navigation.replace("verification")
+          props.navigation.navigate("verification")
         }
       })
   }
@@ -71,7 +71,7 @@ const LoginScreen = (props) => {
           </TouchableOpacity>
           <TouchableOpacity>
             <Text style={styles.signupTextCont}
-              onPress={() => props.navigation.replace("Signup")}
+              onPress={() => props.navigation.navigate('Signup')}
             >Dont have a account yet? Sign up</Text>
           </TouchableOpacity>
         </KeyboardAvoidingView>

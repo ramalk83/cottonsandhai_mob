@@ -4,11 +4,35 @@ import {Avatar,Title,Caption,Paragraph,Drawer,Text,TouchableRipple,Switch} from 
 import {DrawerContentScrollView,DrawerItem} from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import styles from '../../assets/css/style.js';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-export function  CustomDrawerContent(props) {
+import VendorStackNavigation  from './StackNavigators/vendorStackNavigation';
+import TradeStackNavigation  from './StackNavigators/TradeStackNavigation';
+import HomeStackNavigation  from './StackNavigators/HomeStackNavigation';
+import LogoutStackNavigation  from './StackNavigators/LogoutStackNavigation';
+import HelpScreen from '../../screens/ContactScreens/HelpScreen';
+import ContactScreen from '../../screens/ContactScreens/ContactScreen';
+import MainTabScreen from '../../screens/navigation/MainTabScreen';
+
+function DrawerComponent () {
+    const Drawer = createDrawerNavigator();
+    return (
+     <Drawer.Navigator drawerContent={props => CustomDrawerContent (props) }>    
+     <Drawer.Screen name="Home" component={MainTabScreen} />
+     <Drawer.Screen name="Vendor" component={VendorStackNavigation} />
+     <Drawer.Screen name="Trade" component={TradeStackNavigation}/>
+     <Drawer.Screen name="Contact" component={ContactScreen} />
+     <Drawer.Screen name="Help" component={HelpScreen} />
+     <Drawer.Screen name="Logout" component={LogoutStackNavigation} />
+     </Drawer.Navigator>
+    );
+  };
+
+
+ function  CustomDrawerContent(props) {
     return(
         <View style={{flex:1}}>
-            <DrawerContentScrollView {...props}>
+            <DrawerContentScrollView >
                       <Drawer.Section style={styles.drawerSection}>
                       <DrawerItem 
                             icon={({color, size}) => (
@@ -19,7 +43,7 @@ export function  CustomDrawerContent(props) {
                                 />
                             )}
                             label="Home"                     
-                            onPress={() => {props.navigation.navigate('Home')}}
+                            onPress={() => props.navigation.navigate('Home')}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -30,7 +54,7 @@ export function  CustomDrawerContent(props) {
                                 />
                             )}
                             label="Vendor"                     
-                            onPress={() => {props.navigation.navigate('Vendor')}}
+                            onPress={() => props.navigation.navigate('Vendor')}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -42,7 +66,7 @@ export function  CustomDrawerContent(props) {
                                 
                             )}
                             label="Trade"
-                            onPress={() => {props.navigation.navigate('Trade')}}
+                            onPress={() => props.navigation.navigate('Trade')}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -53,7 +77,7 @@ export function  CustomDrawerContent(props) {
                                 />
                             )}
                             label="Help"
-                            onPress={() => {props.navigation.navigate('Help')}}
+                            onPress={() => props.navigation.navigate('Help')}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -64,7 +88,7 @@ export function  CustomDrawerContent(props) {
                                 />
                             )}
                             label="Contact"
-                            onPress={() => {props.navigation.navigate('Contact')}}
+                            onPress={() => props.navigation.navigate('Contact')}
                         />                   
        </Drawer.Section>                  
 </DrawerContentScrollView>
@@ -79,14 +103,11 @@ export function  CustomDrawerContent(props) {
                         />
                     )}
                     label="Log Out"
-                    onPress={() => {{props.navigation.navigate('Logout')}}}
+                    onPress={() => props.navigation.navigate('Logout')}
                 />
             </Drawer.Section>
         </View>
     );
 }
 
-
-
-
-
+export default DrawerComponent;
