@@ -10,7 +10,7 @@ import HomeStackNavigation  from './HomeStackNavigation';
 const Stackroot=createStackNavigator();
 const Stacklogin=createStackNavigator();
 const Stacksignup=createStackNavigator();
-const Stackloginverification=createStackNavigator();
+const Stackverification=createStackNavigator();
 
 function RootStackNavigation() {
     return (
@@ -46,9 +46,9 @@ function RootStackNavigation() {
     return (      
     <Stacklogin.Navigator  headerMode="none">   
     <Stacklogin.Screen name="Login" component={LoginScreen} />                
-    <Stacklogin.Screen name="verification" component={VerificationScreen} />
+    <Stacklogin.Screen name="verification" component={VerificationStackNavigation} />
     <Stacklogin.Screen name="Loading" component={LoadingScreen} />
-    <Stacklogin.Screen name="Signup"  component={SignupScreen} />
+    <Stacklogin.Screen name="Signup"  component={SignupStackNavigation} />
     </Stacklogin.Navigator>
     );
   }
@@ -57,8 +57,8 @@ function RootStackNavigation() {
     return (      
     <Stacksignup.Navigator  headerMode="none">  
     <Stacksignup.Screen name="Signup"  component={SignupScreen} /> 
-    <Stacksignup.Screen name="Login" component={LoginScreen} />                
-    <Stacksignup.Screen name="verification" component={VerificationScreen} />
+    <Stacksignup.Screen name="Login" component={LoginStackNavigation} />                
+    <Stacksignup.Screen name="verification" component={VerificationStackNavigation} />
     </Stacksignup.Navigator>
     );
   }
@@ -67,7 +67,7 @@ function RootStackNavigation() {
     return (      
     <Stackverification.Navigator  headerMode="none"> 
     <Stackverification.Screen name="verification" component={VerificationScreen} />  
-    <Stackverification.Screen name="Login" component={LoginScreen} />                
+    <Stackverification.Screen name="Login" component={LoginStackNavigation} />                
     <Stackverification.Screen name="Signup"  component={SignupScreen} />
     </Stackverification.Navigator>
     );

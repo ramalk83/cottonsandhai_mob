@@ -15,7 +15,7 @@ const HomeStackNavigation =() => {
     return (
     <StackHome.Navigator  headerMode="none" >  
      <StackHome.Screen
-          options={{headerLeft: () => <CustomHeader />}}
+          options={{headerLeft: (props) => <CustomHeader {...props}/>}}
           component={DrawerComponent}
           
     />
