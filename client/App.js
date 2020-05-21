@@ -3,8 +3,8 @@ import React,{useEffect,useState,Component} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import RootStackNavigation  from './screens/navigation/StackNavigators/RootStackNavigation';
-import DrawerComponent from './screens/navigation/DrawerComponent';
+import RootStackNavigation  from './navigation/StackNavigators/RootStackNavigation';
+import DrawerComponent from './navigation/DrawerComponent';
 import { AsyncStorage } from 'react-native';
 
 

@@ -4,7 +4,7 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import styles from '../../assets/css/style.js';
 import { AsyncStorage } from 'react-native';
 
-import  CustomHeader  from '../navigation/CustomHeader';
+import  CustomHeader  from '../../navigation/CustomHeader';
 
 const LogoutScreen = (props) => {
   const [email, setEmail] = useState("loading")

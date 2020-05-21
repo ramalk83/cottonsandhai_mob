@@ -2,9 +2,9 @@
 import React,{useEffect,useState,Component} from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import VendorScreen from '../../VendorScreens/VendorScreen';
-import VendorhomeScreen from '../../VendorScreens/VendorhomeScreen';
-import editvendorScreen from '../../VendorScreens/editVendor';
+import VendorScreen from '../../screens/VendorScreens/VendorScreen';
+import VendorhomeScreen from '../../screens/VendorScreens/VendorhomeScreen';
+import editvendorScreen from '../../screens/VendorScreens/editVendor';
 import CustomHeader from '../../navigation/CustomHeader';
 
 const Stackvendor=createStackNavigator();

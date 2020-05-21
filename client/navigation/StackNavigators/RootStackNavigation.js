@@ -1,12 +1,12 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import SignupScreen from '../../AuthScreens/SignupScreen'
-import LoginScreen from '../../AuthScreens/LoginScreen'
-import LoadingScreen from '../../AuthScreens/LoadingScreen';
-import LogoutScreen from '../../AuthScreens/LogoutScreen';
-import VerificationScreen from '../../AuthScreens/VerificationScreen';
+import SignupScreen from '../../screens/AuthScreens/SignupScreen'
+import LoginScreen from '../../screens/AuthScreens/LoginScreen'
+import LoadingScreen from '../../screens/AuthScreens/LoadingScreen';
+import LogoutScreen from '../../screens/AuthScreens/LogoutScreen';
+import VerificationScreen from '../../screens/AuthScreens/VerificationScreen';
 import HomeStackNavigation  from './HomeStackNavigation';
-import HomeScreen from '../../AuthScreens/HomeScreen';
+import HomeScreen from '../../screens/AuthScreens/HomeScreen';
 import CustomHeader from '../../navigation/CustomHeader';
 import DrawerComponent  from '../../navigation/DrawerComponent';
 

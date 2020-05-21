@@ -3,29 +3,27 @@ import { View, StyleSheet } from 'react-native';
 import {Avatar,Title,Caption,Paragraph,Drawer,Text,TouchableRipple,Switch} from 'react-native-paper';
 import {DrawerContentScrollView,DrawerItem} from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import styles from '../../assets/css/style.js';
+import styles from '../assets/css/style.js';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import VendorStackNavigation  from './StackNavigators/vendorStackNavigation';
 import TradeStackNavigation  from './StackNavigators/TradeStackNavigation';
 import HomeStackNavigation  from './StackNavigators/HomeStackNavigation';
 import LogoutStackNavigation  from './StackNavigators/LogoutStackNavigation';
-import HelpScreen from '../../screens/ContactScreens/HelpScreen';
-import AccountScreen from '../../screens/ContactScreens/AccountScreen';
-import HomeScreen from '../../screens/AuthScreens/HomeScreen';
-import ContactScreen from '../../screens/ContactScreens/ContactScreen';
-import MainTabScreen from '../../screens/navigation/MainTabScreen';
-import CustomHeader from '../../screens/navigation/CustomHeader';
+import HelpScreen from '../screens/ContactScreens/HelpScreen';
+import AccountScreen from '../screens/ContactScreens/AccountScreen';
+import HomeScreen from '../screens/AuthScreens/HomeScreen';
+import ContactScreen from '../screens/ContactScreens/ContactScreen';
+import MainTabScreen from './MainTabScreen';
+import CustomHeader from './CustomHeader';
 
 function DrawerComponent () {
     const Drawer = createDrawerNavigator();
     return (
      <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>   
-       
-       
-     <Drawer.Screen name="Home" component={HomeScreen}/>  
-       
-     <Drawer.Screen name="Vendor" component={VendorStackNavigation} />
+          
+     <Drawer.Screen name="Home" component={HomeStackNavigation} />  
+    <Drawer.Screen name="Vendor" component={VendorStackNavigation} />
      <Drawer.Screen name="Trade" component={TradeStackNavigation}/>
      <Drawer.Screen name="Account" component={AccountScreen} />
      <Drawer.Screen name="Contact" component={ContactScreen} />

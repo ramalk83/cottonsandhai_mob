@@ -3,16 +3,16 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import HomeScreen from '../AuthScreens/HomeScreen';
-import NotificationScreen from '../ContactScreens/NotificationScreen';
-import AccountScreen from '../ContactScreens/AccountScreen';
-import HelpScreen from '../ContactScreens/HelpScreen';
-import LogoutScreen from '../AuthScreens/LogoutScreen';
+import HomeScreen from '../screens/AuthScreens/HomeScreen';
+import NotificationScreen from '../screens/ContactScreens/NotificationScreen';
+import AccountScreen from '../screens/ContactScreens/AccountScreen';
+import HelpScreen from '../screens/ContactScreens/HelpScreen';
+import LogoutScreen from '../screens/AuthScreens/LogoutScreen';
 import VendorStackNavigation  from './StackNavigators/vendorStackNavigation';
 
-import SignupScreen from '../AuthScreens/SignupScreen';
-import TradeScreen from '../TradeScreens/TradeScreen';
-import styles from '../../assets/css/style.js';
+import SignupScreen from '../screens/AuthScreens/SignupScreen';
+import TradeScreen from '../screens/TradeScreens/TradeScreen';
+import styles from '../assets/css/style.js';
 
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
@@ -21,14 +21,13 @@ const TradeStack = createStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
-const MainTabScreen = () => (
-  
+const MainTabScreen = () => (  
   <Tab.Navigator headerMode="none" initialRouteName="Home"
   activeColor="black" inactiveColor="#434445"  barStyle={{ borderTopColor:'gray',backgroundColor:'white',borderTopWidth:0.5 }}
   >
     <Tab.Screen
       name="Home"
-      component={HomeStackScreen}
+      component={HomeScreen}
       options={{
         tabBarLabel: 'Home',
         tabBarColor: 'white',
@@ -68,19 +67,14 @@ export default MainTabScreen;
 const HomeStackScreen = () => (
 <HomeStack.Navigator    headerMode="none" initialRouteName="Home">
 <HomeStack.Screen name="Home" component={HomeScreen} />
-<HomeStack.Screen name="Help" component={HelpScreen} />
-<HomeStack.Screen name="Logout" component={LogoutScreen} />
-<HomeStack.Screen name="Trade" component={TradeScreen} />
-<HomeStack.Screen name="Vendor" component={VendorStackNavigation} />
+
 </HomeStack.Navigator>
 );
 
 const DetailsStackScreen = () => (
 <DetailsStack.Navigator  headerMode="none">
 <DetailsStack.Screen name="Notification" component={NotificationScreen}  />
-<DetailsStack.Screen name="Help" component={HelpScreen} />
-<DetailsStack.Screen name="Logout" component={LogoutScreen} />
-<DetailsStack.Screen name="Vendor" component={VendorStackNavigation} />
+
 </DetailsStack.Navigator>
 );
 
@@ -88,9 +82,7 @@ const DetailsStackScreen = () => (
 const AccountStackScreen = () => (
   <AccountStack.Navigator  headerMode="none">
   <AccountStack.Screen name="Account" component={AccountScreen} />
-  <AccountStack.Screen name="Help" component={HelpScreen} />
-  <AccountStack.Screen name="Logout" component={LogoutScreen} />
-  <AccountStack.Screen name="Vendor" component={VendorStackNavigation} />
+  
   </AccountStack.Navigator>
   );
     

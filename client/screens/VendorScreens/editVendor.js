@@ -3,7 +3,7 @@
 import React from 'react';
 import { View, TextInput,Text, Button, StyleSheet } from 'react-native';
 import styles from '../../assets/css/style.js';
-import  CustomHeader  from '../navigation/CustomHeader';
+import  CustomHeader  from '../../navigation/CustomHeader';
 
 const editvendorScreen = ({ route, navigation }) => {
 

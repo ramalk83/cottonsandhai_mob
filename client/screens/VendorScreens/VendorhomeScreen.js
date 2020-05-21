@@ -4,7 +4,7 @@ TouchableWithoutFeedback,TouchableOpacity,Image} from 'react-native';
 import Constants from 'expo-constants';
 import VendorScreen from './VendorScreen'
 import styles from '../../assets/css/style.js';
-import  CustomHeader  from '../navigation/CustomHeader';
+import  CustomHeader  from '../../navigation/CustomHeader';
 
 const images={
   expand:require('../../assets/images/downArrow.png')

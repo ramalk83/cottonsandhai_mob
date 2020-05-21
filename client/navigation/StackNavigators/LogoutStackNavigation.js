@@ -2,11 +2,10 @@
 
 import React,{useEffect,useState,Component} from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import LogoutScreen from '../../AuthScreens/LogoutScreen';
-import LoginScreen from '../../AuthScreens/LoginScreen';
-import SignupScreen from '../../AuthScreens/SignupScreen';
+import LogoutScreen from '../../screens/AuthScreens/LogoutScreen';
+import LoginScreen from '../../screens/AuthScreens/LoginScreen';
+import SignupScreen from '../../screens/AuthScreens/SignupScreen';
 import CustomHeader from '../../navigation/CustomHeader';
-
 
 const Stacklogout=createStackNavigator();
 

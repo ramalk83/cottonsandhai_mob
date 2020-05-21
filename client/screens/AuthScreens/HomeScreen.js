@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { AsyncStorage } from 'react-native';
 import styles from '../../assets/css/style';
-import  CustomHeader  from '../navigation/CustomHeader';
+import  CustomHeader  from '../../navigation/CustomHeader';
 
 
 const HomeScreen = (props) => {

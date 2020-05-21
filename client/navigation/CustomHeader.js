@@ -18,7 +18,7 @@ export default function CustomHeader({ title, navigation,isHome }){
 
        <TouchableOpacity  onPress={openMenu}>
         <Image style={{width:30,height:30,marginLeft:5}}
-          source={require('../../assets/images/menu.png')}
+          source={require('../assets/images/menu.png')}
           resizeMethod="auto"/>
        </TouchableOpacity>    
          
@@ -26,7 +26,7 @@ export default function CustomHeader({ title, navigation,isHome }){
          <TouchableOpacity style={{flexDirection:'row',alignItems:'center'}}
          onPress={()=>navigation.goBack()}>
          <Image style={{width:30,height:30,marginLeft:5}}
-         source={require('../../assets/images/arrow.png')}
+         source={require('../assets/images/arrow.png')}
          resizeMethod="auto"/>
          </TouchableOpacity>
        }
