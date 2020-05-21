@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import styles from '../../assets/css/style.js';
 import { AsyncStorage } from 'react-native';
-import  CustomHeader  from '../navigation/CustomHeader';
 
+import  CustomHeader  from '../navigation/CustomHeader';
 
 const LogoutScreen = (props) => {
   const [email, setEmail] = useState("loading")
@@ -31,7 +31,7 @@ const LogoutScreen = (props) => {
   }
     return (
       <>
-      <CustomHeader title="Logout" isHome={true} navigation={props}/>
+     <CustomHeader title="Logout" isHome={true} navigation={props.navigation}/>
       <View style={styles.containerr}>
       <Text style={styles.welcomeTextCont}>Are you sure ?</Text>
       <Button

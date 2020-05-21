@@ -11,7 +11,7 @@ import styles from '../../assets/css/style';
 import  CustomHeader  from '../navigation/CustomHeader';
 
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = (props) => {
   const [email, setEmail] = useState("loading")
   const Boiler = async () => {
     const token = await AsyncStorage.getItem("token")
@@ -40,20 +40,22 @@ const HomeScreen = ({navigation}) => {
  
   return (
     <>
-    <CustomHeader title="Home" isHome={true} navigation={navigation}/>
+        <CustomHeader title="Home" isHome={true} navigation={props.navigation}/>
       <View style={styles.container}>
-        <Text style={styles.welcomeTextCont}>Welcome!, Your email is {email}</Text>
+     
+      <Text style={styles.welcomeTextCont}>Welcome!, Your email is {email}</Text>
       
-        <Button
+      <Button
           mode="contained"
           style={styles.logoutButton}
-          onPress={() =>navigation.navigate("Vendor")}>
+          onPress={() =>props.navigation.navigate("Vendor")}>
           Vendor
       </Button>
+
      <Button
           mode="contained"
           style={styles.logoutButton}          
-          onPress={() => navigation.navigate("Trade")}>
+          onPress={() => props.navigation.navigate("Trade")}>
           Trade
      </Button>
       </View>

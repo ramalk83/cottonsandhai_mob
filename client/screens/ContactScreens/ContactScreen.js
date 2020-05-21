@@ -11,12 +11,7 @@ const ContactScreen = ({navigation}) => {
       <CustomHeader title="Contact" isHome={true} navigation={navigation}/>
       <View style={styles.containerr}>
         <Text style={styles.welcomeTextCont}>Contact Screen</Text>
-        <Button
-             mode="contained"
-             style={styles.logoutButton}
-               title="BACK"
-            onPress={() => navigation.goBack()}
-        />
+    
       </View>
       </>
     );

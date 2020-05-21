@@ -66,7 +66,7 @@ const MainTabScreen = () => (
 export default MainTabScreen;
 
 const HomeStackScreen = () => (
-<HomeStack.Navigator    headerMode="none" >
+<HomeStack.Navigator    headerMode="none" initialRouteName="Home">
 <HomeStack.Screen name="Home" component={HomeScreen} />
 <HomeStack.Screen name="Help" component={HelpScreen} />
 <HomeStack.Screen name="Logout" component={LogoutScreen} />

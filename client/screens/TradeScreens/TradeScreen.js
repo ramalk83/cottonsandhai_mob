@@ -8,8 +8,10 @@ import  CustomHeader  from '../navigation/CustomHeader';
 const TradeScreen = ({navigation}) => {
     return (
       <>
-      <CustomHeader title="Trade" isHome={true} navigation={navigation}/>
+            <CustomHeader title="Trade" isHome={true} navigation={navigation}/>
       <View style={styles.containerr}>
+
+
         <Text style={styles.welcomeTextCont}>Trade Screen</Text>
     
       </View>

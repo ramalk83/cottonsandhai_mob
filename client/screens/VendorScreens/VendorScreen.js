@@ -231,7 +231,8 @@ return (
     ListHeaderComponent={renderHeader}
     ItemSeparatorComponent = { FlatListItemSeparator }
     renderItem={renderData}    
-    keyExtractor={item => item.id}
+    //keyExtractor={item => item.id}
+    keyExtractor={item => item.id.toString()}
     extraData={selected,selected1}
 />
 </>

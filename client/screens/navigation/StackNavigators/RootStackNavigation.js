@@ -6,6 +6,9 @@ import LoadingScreen from '../../AuthScreens/LoadingScreen';
 import LogoutScreen from '../../AuthScreens/LogoutScreen';
 import VerificationScreen from '../../AuthScreens/VerificationScreen';
 import HomeStackNavigation  from './HomeStackNavigation';
+import HomeScreen from '../../AuthScreens/HomeScreen';
+import CustomHeader from '../../navigation/CustomHeader';
+import DrawerComponent  from '../../navigation/DrawerComponent';
 
 const Stackroot=createStackNavigator();
 const Stacklogin=createStackNavigator();
@@ -13,17 +16,15 @@ const Stacksignup=createStackNavigator();
 const Stackverification=createStackNavigator();
 
 function RootStackNavigation() {
-    return (
-      
+    return (      
     <Stackroot.Navigator  headerMode="none">   
     <Stackroot.Screen name="Login" 
     component={LoginStackNavigation} 
      />                
-    
     <Stackroot.Screen name="Loading" 
     component={LoadingScreen} 
     />
-  <Stackroot.Screen name="verification"
+    <Stackroot.Screen name="verification"
      component={VerificationStackNavigation} 
     />
     <Stackroot.Screen name="Logout"
@@ -33,7 +34,7 @@ function RootStackNavigation() {
     component={SignupStackNavigation} 
     />
      <Stackroot.Screen name="Home" 
-    component={HomeStackNavigation} 
+    component={DrawerComponent} 
     />
     </Stackroot.Navigator>
     );
@@ -44,11 +45,11 @@ function RootStackNavigation() {
 
   function LoginStackNavigation() {
     return (      
-    <Stacklogin.Navigator  headerMode="none">   
+    <Stacklogin.Navigator  headerMode="none" initialRouteName="Login">   
     <Stacklogin.Screen name="Login" component={LoginScreen} />                
     <Stacklogin.Screen name="verification" component={VerificationStackNavigation} />
     <Stacklogin.Screen name="Loading" component={LoadingScreen} />
-    <Stacklogin.Screen name="Signup"  component={SignupStackNavigation} />
+    <Stacklogin.Screen name="Signup"  component={SignupScreen} />
     </Stacklogin.Navigator>
     );
   }
@@ -57,7 +58,7 @@ function RootStackNavigation() {
     return (      
     <Stacksignup.Navigator  headerMode="none">  
     <Stacksignup.Screen name="Signup"  component={SignupScreen} /> 
-    <Stacksignup.Screen name="Login" component={LoginStackNavigation} />                
+    <Stacksignup.Screen name="Login" component={LoginScreen} />                
     <Stacksignup.Screen name="verification" component={VerificationStackNavigation} />
     </Stacksignup.Navigator>
     );
@@ -67,7 +68,7 @@ function RootStackNavigation() {
     return (      
     <Stackverification.Navigator  headerMode="none"> 
     <Stackverification.Screen name="verification" component={VerificationScreen} />  
-    <Stackverification.Screen name="Login" component={LoginStackNavigation} />                
+    <Stackverification.Screen name="Login" component={LoginScreen} />                
     <Stackverification.Screen name="Signup"  component={SignupScreen} />
     </Stackverification.Navigator>
     );

@@ -9,13 +9,7 @@ const NotificationScreen = ({navigation}) => {
       <CustomHeader title="Notification" isHome={true} navigation={navigation}/>
       <View style={styles.containerr}>
         <Text style={styles.welcomeTextCont}>Notification Screen</Text>
-      
-        <Button
-          mode="contained"
-          style={styles.logoutButton}
-            title="BACK"
-            onPress={() => navigation.navigate("Home")}
-        />
+  
       </View>
       </>
     );

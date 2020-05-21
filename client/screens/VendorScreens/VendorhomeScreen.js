@@ -37,7 +37,7 @@ const VendorhomeScreen = ({navigation}) =>{
 
   return (
     <>
-    <CustomHeader title="Add Vendor" navigation={navigation}/>   
+    <CustomHeader title="Add Vendor"  navigation={navigation}/>
     <View style={styles.container}>
      
       <FlatList
@@ -226,6 +226,5 @@ return (
 </>  
 );
 }
-
 
 

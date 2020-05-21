@@ -8,15 +8,11 @@ import  CustomHeader  from '../navigation/CustomHeader';
 const HelpScreen = ({navigation}) => {
     return (
       <>
-      <CustomHeader title="Help" isHome={true} navigation={navigation}/>
+     
       <View style={styles.containerr}>
+      <CustomHeader title="Help" isHome={true} navigation={navigation}/>
         <Text style={styles.welcomeTextCont}>Help Screen</Text>
-        <Button
-               mode="contained"
-               style={styles.logoutButton}
-                 title="BACK"
-            onPress={() => navigation.goBack()}
-        />
+    
       </View>
       </>
     );

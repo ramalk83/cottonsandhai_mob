@@ -11,18 +11,25 @@ import TradeStackNavigation  from './StackNavigators/TradeStackNavigation';
 import HomeStackNavigation  from './StackNavigators/HomeStackNavigation';
 import LogoutStackNavigation  from './StackNavigators/LogoutStackNavigation';
 import HelpScreen from '../../screens/ContactScreens/HelpScreen';
+import AccountScreen from '../../screens/ContactScreens/AccountScreen';
+import HomeScreen from '../../screens/AuthScreens/HomeScreen';
 import ContactScreen from '../../screens/ContactScreens/ContactScreen';
 import MainTabScreen from '../../screens/navigation/MainTabScreen';
+import CustomHeader from '../../screens/navigation/CustomHeader';
 
 function DrawerComponent () {
     const Drawer = createDrawerNavigator();
     return (
-     <Drawer.Navigator drawerContent={props => CustomDrawerContent (props) }>    
-     <Drawer.Screen name="Home" component={MainTabScreen} />
+     <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>   
+       
+       
+     <Drawer.Screen name="Home" component={HomeScreen}/>  
+       
      <Drawer.Screen name="Vendor" component={VendorStackNavigation} />
      <Drawer.Screen name="Trade" component={TradeStackNavigation}/>
+     <Drawer.Screen name="Account" component={AccountScreen} />
      <Drawer.Screen name="Contact" component={ContactScreen} />
-     <Drawer.Screen name="Help" component={HelpScreen} />
+     <Drawer.Screen name="Help" component={HelpScreen} />     
      <Drawer.Screen name="Logout" component={LogoutStackNavigation} />
      </Drawer.Navigator>
     );
@@ -67,6 +74,18 @@ function DrawerComponent () {
                             )}
                             label="Trade"
                             onPress={() => props.navigation.navigate('Trade')}
+                        />
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="account-check-outline" 
+                                color={color}
+                                size={size}
+                                />
+                                
+                            )}
+                            label="Account"
+                            onPress={() => props.navigation.navigate('Account')}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
